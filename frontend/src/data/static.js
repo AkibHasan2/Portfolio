@@ -4,8 +4,8 @@
  */
 
 export const staticProfile = {
-  fullName: "IzAkib",
-  FullName: "IzAkib",
+  fullName: "Akib Hasan",
+  FullName: "Akib Hasan",
   headline: ".NET / C# Backend Engineer specializing in banking & payments systems",
   Headline: ".NET / C# Backend Engineer specializing in banking & payments systems",
   summary:

@@ -6,7 +6,7 @@ GO
 IF NOT EXISTS (SELECT 1 FROM dbo.Profile)
 INSERT INTO dbo.Profile (FullName, Headline, Summary, Location, Email, GithubUrl, LinkedinUrl)
 VALUES (
-  N'IzAkib',
+  N'Akib Hasan',
   N'.NET / C# Backend Engineer — Banking & Payments Systems',
   N'I build backend APIs and document-generation systems for card management platforms in production banking environments — from PDF-driven mailer forms to multi-signatory transaction authorization flows.',
   N'Dhaka, Bangladesh',
