@@ -1,23 +1,23 @@
 import { motion, useReducedMotion } from "framer-motion";
 
+/** Status chip — clean professional badge (no novelty stamp rotation). */
 export default function Stamp({ children, tone = "verified", animate = true, className = "" }) {
   const reduce = useReducedMotion();
   const toneClasses = {
-    verified: "border-verified text-verified",
-    amber: "border-amber text-amber",
-    wire: "border-wire text-wire",
+    verified: "border-success/40 bg-success/10 text-success",
+    amber: "border-amber/40 bg-amber/10 text-amber",
+    wire: "border-rule bg-surface2 text-muted",
   };
 
   return (
     <motion.span
-      className={`inline-flex items-center gap-1.5 rounded-sm border-2 px-2.5 py-1 font-mono text-[11px] uppercase tracking-widest -rotate-6 ${
+      className={`inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-xs font-semibold tracking-wide ${
         toneClasses[tone]
       } ${className}`}
-      initial={animate && !reduce ? { scale: 2.2, rotate: -14, opacity: 0 } : false}
-      whileInView={animate && !reduce ? { scale: 1, rotate: -8, opacity: 1 } : undefined}
+      initial={animate && !reduce ? { opacity: 0, y: 4 } : false}
+      whileInView={animate && !reduce ? { opacity: 1, y: 0 } : undefined}
       viewport={{ once: true }}
-      transition={{ type: "spring", stiffness: 380, damping: 16, delay: 0.2 }}
-      whileHover={reduce ? undefined : { scale: 1.06, rotate: -4 }}
+      transition={{ duration: 0.35, delay: 0.1 }}
     >
       {children}
     </motion.span>

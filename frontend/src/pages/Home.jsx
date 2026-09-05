@@ -6,7 +6,6 @@ import Skills from "../components/sections/Skills.jsx";
 import Projects from "../components/sections/Projects.jsx";
 import Experience from "../components/sections/Experience.jsx";
 import Contact from "../components/sections/Contact.jsx";
-import CursorGlow from "../components/ui/CursorGlow.jsx";
 import { useFetch } from "../hooks/useFetch.js";
 import { api } from "../services/api.js";
 import {
@@ -24,7 +23,6 @@ export default function Home() {
 
   return (
     <div className="grain relative min-h-screen bg-ink">
-      <CursorGlow />
       <Navbar name={profile?.fullName?.split(" ")[0] || profile?.FullName?.split(" ")[0] || profile?.fullName} />
       <main>
         <Hero profile={profile} />

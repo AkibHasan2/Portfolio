@@ -6,18 +6,18 @@
 export const staticProfile = {
   fullName: "IzAkib",
   FullName: "IzAkib",
-  headline: ".NET / C# Backend Engineer — Banking & Payments Systems",
-  Headline: ".NET / C# Backend Engineer — Banking & Payments Systems",
+  headline: ".NET / C# Backend Engineer specializing in banking & payments systems",
+  Headline: ".NET / C# Backend Engineer specializing in banking & payments systems",
   summary:
-    "I build backend APIs and document-generation systems for card management platforms in production banking environments — from PDF-driven mailer forms to multi-signatory transaction authorization flows.",
+    "I build production backend APIs and document-generation systems for card management platforms — from PDF mailer workflows to multi-signatory transaction authorization. Focused on reliability, clear contracts, and audit-ready design.",
   Summary:
-    "I build backend APIs and document-generation systems for card management platforms in production banking environments — from PDF-driven mailer forms to multi-signatory transaction authorization flows.",
+    "I build production backend APIs and document-generation systems for card management platforms — from PDF mailer workflows to multi-signatory transaction authorization. Focused on reliability, clear contracts, and audit-ready design.",
   location: "Dhaka, Bangladesh",
   Location: "Dhaka, Bangladesh",
   email: "you@example.com",
   Email: "you@example.com",
-  githubUrl: "https://github.com/your-handle",
-  GithubUrl: "https://github.com/your-handle",
+  githubUrl: "https://github.com/AkibHasan2",
+  GithubUrl: "https://github.com/AkibHasan2",
   linkedinUrl: "https://linkedin.com/in/your-handle",
   LinkedinUrl: "https://linkedin.com/in/your-handle",
 };
@@ -36,7 +36,7 @@ export const staticSkills = [
 export const staticProjects = [
   {
     Title: "Multi-Signatory Transaction Authorization",
-    Summary: "A rule-engine driven approval flow for corporate investment banking transactions.",
+    Summary: "Rule-engine approval flow for corporate investment banking transactions with full audit trail.",
     TechStack: "React, Rule Engine, Audit Logging",
     Featured: true,
     RepoUrl: "",
@@ -52,7 +52,7 @@ export const staticProjects = [
   },
   {
     Title: "Card Management API Suite",
-    Summary: "ASP.NET Core Web APIs for card issuance and status workflows, documented via Swagger.",
+    Summary: "ASP.NET Core APIs for card issuance and status workflows, documented with Swagger/OpenAPI.",
     TechStack: "ASP.NET Core, SQL Server, Swagger",
     Featured: false,
     RepoUrl: "",
@@ -66,6 +66,7 @@ export const staticExperience = [
     Role: ".NET / C# Developer",
     StartDate: "2023-01-01",
     EndDate: null,
-    Summary: "Building backend APIs and document generation for a bank card management system.",
+    Summary:
+      "Building backend APIs and document generation for a bank card management platform used in production banking operations.",
   },
 ];

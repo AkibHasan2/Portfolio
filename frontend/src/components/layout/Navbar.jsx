@@ -5,7 +5,7 @@ import ThemeToggle from "../ui/ThemeToggle.jsx";
 const LINKS = [
   { href: "#about", label: "About", id: "about" },
   { href: "#skills", label: "Skills", id: "skills" },
-  { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#projects", label: "Work", id: "projects" },
   { href: "#experience", label: "Experience", id: "experience" },
   { href: "#contact", label: "Contact", id: "contact" },
 ];
@@ -44,28 +44,26 @@ export default function Navbar({ name = "Portfolio" }) {
     <motion.header
       className={`sticky top-0 z-40 border-b transition-[background,border-color,box-shadow] duration-300 ${
         scrolled
-          ? "border-rule bg-ink/90 shadow-[0_8px_32px_-16px_rgb(var(--paper)/0.12)] backdrop-blur-md"
-          : "border-transparent bg-ink/70 backdrop-blur-sm"
+          ? "border-rule bg-ink/90 shadow-[0_8px_30px_-18px_rgb(0_0_0/0.45)] backdrop-blur-md"
+          : "border-transparent bg-ink/60 backdrop-blur-sm"
       }`}
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="group font-display text-lg font-semibold tracking-tight text-paper">
+        <a href="#top" className="font-display text-lg font-bold tracking-tightish text-paper">
           {name}
-          <span className="text-verified transition-transform duration-300 group-hover:inline-block group-hover:translate-x-0.5">
-            .
-          </span>
+          <span className="text-verified">.</span>
         </a>
 
-        <ul className="hidden gap-8 font-mono text-xs uppercase tracking-widest text-muted md:flex">
+        <ul className="hidden items-center gap-7 text-sm font-medium text-muted md:flex">
           {LINKS.map((link) => (
             <li key={link.href} className="relative">
               <a
                 href={link.href}
-                className={`link-underline transition-colors ${
-                  active === link.id ? "text-verified" : "hover:text-verified"
+                className={`transition-colors ${
+                  active === link.id ? "text-paper" : "hover:text-paper"
                 }`}
               >
                 {link.label}
@@ -73,7 +71,7 @@ export default function Navbar({ name = "Portfolio" }) {
               {active === link.id && (
                 <motion.span
                   layoutId="nav-active"
-                  className="absolute -bottom-1 left-0 h-px w-full bg-verified"
+                  className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-verified"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -81,12 +79,12 @@ export default function Navbar({ name = "Portfolio" }) {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <ThemeToggle />
           <motion.a
             href="#contact"
-            className="hidden rounded-sm border border-rule px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:border-verified hover:text-verified sm:inline-flex"
-            whileHover={{ scale: 1.04, y: -1 }}
+            className="hidden rounded-md bg-verified px-3.5 py-2 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 sm:inline-flex"
+            whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
           >
             Hire me
@@ -94,7 +92,7 @@ export default function Navbar({ name = "Portfolio" }) {
 
           <button
             type="button"
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-sm border border-rule text-paper md:hidden"
+            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-md border border-rule text-paper md:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -127,12 +125,12 @@ export default function Navbar({ name = "Portfolio" }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ul className="flex flex-col gap-3 font-mono text-xs uppercase tracking-widest text-muted">
+            <ul className="flex flex-col gap-3 text-sm font-medium text-muted">
               {LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className={active === link.id ? "text-verified" : "hover:text-verified"}
+                    className={active === link.id ? "text-paper" : "hover:text-paper"}
                     onClick={() => setMenuOpen(false)}
                   >
                     {link.label}
