@@ -46,15 +46,17 @@ Default admin login (local `.env`): `you@example.com` / `admin123`
 
 ## Deploy (GitHub Pages)
 
-Pushing to `main` publishes the site to the `gh-pages` branch via GitHub Actions.
+Pushing to `main` rebuilds and publishes to the `gh-pages` branch via GitHub Actions.
 
-**One-time setup** (required):
+**Live site:** https://AkibHasan2.github.io/Portfolio/
 
-1. Open https://github.com/AkibHasan2/Portfolio/settings/pages
-2. Under **Build and deployment → Source**, choose **Deploy from a branch**
-3. Branch: **gh-pages** / folder: **/ (root)** → Save
+**One-time setup** (if the site 404s):
 
-Site URL: https://AkibHasan2.github.io/Portfolio/
+1. Open https://github.com/AkibHasan2/Portfolio/settings/pages  
+2. **Source:** Deploy from a branch  
+3. **Branch:** `gh-pages` / **Folder:** `/ (root)` → Save  
+
+After each push, wait for the green check on **Actions → Deploy GitHub Pages**, then open the live URL with a hard refresh (`Ctrl+Shift+R`) so your browser does not keep an old cached build.
 
 > Admin CMS and live DB features need a separate hosted API; Pages serves the static portfolio only.
 

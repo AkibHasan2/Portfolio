@@ -30,12 +30,13 @@ jobs:
         working-directory: frontend
         run: npm ci
 
-      - name: Build static site
+      - name: Build static site for Pages
         working-directory: frontend
         env:
           GITHUB_PAGES: "true"
           VITE_USE_DB: "false"
-        run: npm run build
+          GITHUB_SHA: ${{ github.sha }}
+        run: npm run build:pages
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
@@ -43,3 +44,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: frontend/dist
           force_orphan: true
+          # Always publish a clean tree so old hashed assets cannot linger
+          keep_files: false
