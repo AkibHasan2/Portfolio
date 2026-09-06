@@ -17,12 +17,12 @@ export const staticProfile = {
     "Backend-focused software engineer specializing in banking payments and enterprise integration on the .NET platform. I design and implement ASP.NET Core middleware that sits between digital/branch channels and core banking systems, handling account verification, fund movement, multi-provider bill settlement, and dual-control (maker/checker) authorization. My work emphasizes recoverable workflows, explicit transaction status lifecycles, SQL-backed audit trails, and careful integration with heterogeneous external APIs. I also deliver React operations interfaces for complex branch workflows and reusable logging libraries that improve end-to-end API traceability.",
   location: "Dhaka, Bangladesh",
   Location: "Dhaka, Bangladesh",
-  email: "you@example.com",
-  Email: "you@example.com",
+  email: "akib.hasan.learn@gmail.com.bd",
+  Email: "akib.hasan.learn@gmail.com.bd",
   githubUrl: "https://github.com/AkibHasan2",
   GithubUrl: "https://github.com/AkibHasan2",
-  linkedinUrl: "",
-  LinkedinUrl: "",
+  linkedinUrl: "https://www.linkedin.com/in/akib-hasan-iz",
+  LinkedinUrl: "https://www.linkedin.com/in/akib-hasan-iz",
   positioning:
     "I build enterprise .NET middleware that connects bank channels and branch operations to core banking and external payment providers—implementing dual-control workflows, reliable settlement paths, and audit-friendly transaction handling for regulated banking environments.",
 };

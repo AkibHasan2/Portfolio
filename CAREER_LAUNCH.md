@@ -17,7 +17,7 @@ Content is aligned with `PORTFOLIO_MASTER.md`. Do not invent metrics or publish 
    - `/work/bond-platform`
    - `/work/fund-transfer`
    - `/work/conversation-logging`
-5. When you have a real email and LinkedIn URL, update `frontend/src/data/portfolio.js` (`email`, `linkedinUrl`) and redeploy.
+5. Contact is set: `akib.hasan.learn@gmail.com.bd` · LinkedIn `https://www.linkedin.com/in/akib-hasan-iz` · GitHub `AkibHasan2`.
 
 ---
 
@@ -39,12 +39,14 @@ Recent work includes utility bill payment orchestration with workflow engines, b
 I care about integration correctness, failure visibility, and operational safety in regulated environments. Open to backend/.NET roles centered on banking technology, payments, and enterprise integration.
 
 Portfolio: https://AkibHasan2.github.io/Portfolio/
+LinkedIn: https://www.linkedin.com/in/akib-hasan-iz
+Email: akib.hasan.learn@gmail.com.bd
 ```
 
 ### 3. Featured
 
 - Add link: **Portfolio** → https://AkibHasan2.github.io/Portfolio/
-- Add 3–4 featured items pointing at case studies (or short posts summarizing Utility, Bond, Fund Transfer, Logging).
+- Add link: **LinkedIn profile** is already your home — Featured can also deep-link case studies from the site.
 
 ### 4. Experience bullets (use as-is; no fake numbers)
 
@@ -116,8 +118,8 @@ From `PORTFOLIO_MASTER.md` §18 — fill when ready, then update site + LinkedIn
 - [ ] Official job title(s) for public use  
 - [ ] Employment dates / project durations  
 - [ ] Team size / ownership boundaries  
-- [ ] Real professional email  
-- [ ] Real LinkedIn URL  
+- [x] Real professional email — `akib.hasan.learn@gmail.com.bd`
+- [x] Real LinkedIn URL — `https://www.linkedin.com/in/akib-hasan-iz`
 - [ ] Compliance OK for any screenshots/diagrams  
 - [ ] Preferred target roles  
 
