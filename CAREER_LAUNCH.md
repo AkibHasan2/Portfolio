@@ -21,7 +21,9 @@ Content is aligned with `PORTFOLIO_MASTER.md`. Do not invent metrics or publish 
 
 ---
 
-## Phase B — LinkedIn (same week)
+## Phase B — LinkedIn (do now — paste on LinkedIn)
+
+Open https://www.linkedin.com/in/akib-hasan-iz → **pencil** on intro / About.
 
 ### 1. Headline (copy)
 
@@ -39,14 +41,14 @@ Recent work includes utility bill payment orchestration with workflow engines, b
 I care about integration correctness, failure visibility, and operational safety in regulated environments. Open to backend/.NET roles centered on banking technology, payments, and enterprise integration.
 
 Portfolio: https://AkibHasan2.github.io/Portfolio/
-LinkedIn: https://www.linkedin.com/in/akib-hasan-iz
 Email: akib.hasan.learn@gmail.com.bd
 ```
 
-### 3. Featured
+### 3. Featured + Website field
 
-- Add link: **Portfolio** → https://AkibHasan2.github.io/Portfolio/
-- Add link: **LinkedIn profile** is already your home — Featured can also deep-link case studies from the site.
+- **Website** (Contact info): https://AkibHasan2.github.io/Portfolio/
+- **Featured** → Add a link → Portfolio → https://AkibHasan2.github.io/Portfolio/
+- Optional Featured deep links: `/work/utility-payments`, `/work/bond-platform`, `/work/fund-transfer`, `/work/conversation-logging`
 
 ### 4. Experience bullets (use as-is; no fake numbers)
 
@@ -72,9 +74,14 @@ Email: akib.hasan.learn@gmail.com.bd
 
 ---
 
-## Phase C — GitHub (after LinkedIn)
+## Phase C — GitHub
 
-### Keep private
+### Privacy status (checked 2026-09-06)
+
+Public on `AkibHasan2`: **Portfolio**, **dipti-class** only.  
+No bank / middleware project names are public — keep it that way.
+
+### Keep private (never flip to Public)
 
 - Utility payment middleware  
 - Bond platform (API + UI)  
@@ -82,11 +89,22 @@ Email: akib.hasan.learn@gmail.com.bd
 - Balance alert service  
 - Real conversation-logging library if employer-specific  
 
+If any of those exist on GitHub: repo → **Settings** → **Danger Zone** → **Change visibility** → **Private**.
+
 ### Keep / make public
 
-- This **Portfolio** repo only (already public).
+- **Portfolio** only for career signal (already public).
 
-### Profile README (suggested)
+### Pin Portfolio (do now)
+
+1. Open https://github.com/AkibHasan2  
+2. Click **Customize your pins** (or pencil on “Popular repositories”)  
+3. Pin **`Portfolio`** (and optionally unpin `dipti-class` if you want a cleaner profile)  
+4. Save
+
+### Profile README (optional — same day)
+
+Create repo named exactly `AkibHasan2` (public), add `README.md`:
 
 ```markdown
 ### Hi, I'm Akib Hasan
@@ -96,11 +114,6 @@ Email: akib.hasan.learn@gmail.com.bd
 
 Focus: ASP.NET Core · SQL Server · CBS integration · Maker/Checker · Conductor
 ```
-
-### Pins
-
-1. `AkibHasan2/Portfolio`  
-2. (Later) sanitized demo repos only — never real bank code.
 
 ### Optional later demos (sanitized)
 

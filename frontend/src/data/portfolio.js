@@ -124,7 +124,7 @@ export const staticProjects = [
       "Explicit failure statuses + audit trail",
     ],
     RepoUrl: "",
-    LiveUrl: "",
+    LiveUrl: "/demo/utility-payments",
   },
   {
     Id: "bond-platform",
@@ -142,7 +142,7 @@ export const staticProjects = [
       "Secure short-token certificate verification",
     ],
     RepoUrl: "",
-    LiveUrl: "",
+    LiveUrl: "/demo/bond-platform",
   },
   {
     Id: "fund-transfer",
@@ -160,7 +160,7 @@ export const staticProjects = [
       "Client txn uniqueness + status enquiry",
     ],
     RepoUrl: "",
-    LiveUrl: "",
+    LiveUrl: "/demo/fund-transfer",
   },
   {
     Id: "conversation-logging",
@@ -178,7 +178,7 @@ export const staticProjects = [
       "Plug-in DI/pipeline registration",
     ],
     RepoUrl: "",
-    LiveUrl: "",
+    LiveUrl: "/demo/conversation-logging",
   },
 ];
 

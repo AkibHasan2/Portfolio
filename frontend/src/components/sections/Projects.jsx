@@ -64,9 +64,17 @@ export default function Projects({ projects = [] }) {
                   ))}
                 </div>
                 {slug && (
-                  <Link to={`/work/${slug}`} className="mt-5 inline-flex text-sm font-semibold text-verified link-underline">
-                    Read case study →
-                  </Link>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <Link
+                      to={`/demo/${slug}`}
+                      className="inline-flex rounded-md bg-verified px-3 py-1.5 text-sm font-semibold text-on-accent"
+                    >
+                      See demo
+                    </Link>
+                    <Link to={`/work/${slug}`} className="inline-flex items-center text-sm font-semibold text-verified link-underline">
+                      Case study →
+                    </Link>
+                  </div>
                 )}
               </motion.article>
             );

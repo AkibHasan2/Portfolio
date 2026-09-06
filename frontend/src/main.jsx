@@ -6,6 +6,7 @@ import { ThemeProvider } from "./context/ThemeContext.jsx";
 import Home from "./pages/Home.jsx";
 import Admin from "./pages/Admin.jsx";
 import CaseStudy from "./pages/CaseStudy.jsx";
+import Demo from "./pages/Demo.jsx";
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
 
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work/:slug" element={<CaseStudy />} />
+          <Route path="/demo/:slug" element={<Demo />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
