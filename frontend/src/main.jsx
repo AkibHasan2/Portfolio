@@ -5,6 +5,7 @@ import "./index.css";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import Home from "./pages/Home.jsx";
 import Admin from "./pages/Admin.jsx";
+import CaseStudy from "./pages/CaseStudy.jsx";
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
 
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter basename={basename === "/" ? undefined : basename}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/work/:slug" element={<CaseStudy />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>

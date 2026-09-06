@@ -1,72 +1,59 @@
+import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import EntryHeading from "../ui/EntryHeading.jsx";
 import Stamp from "../ui/Stamp.jsx";
 import Reveal from "../ui/Reveal.jsx";
 
 export default function Projects({ projects = [] }) {
-  const list = projects;
+  const list = projects.filter((p) => p.Featured ?? p.featured);
   const reduce = useReducedMotion();
-
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
       <EntryHeading
         code="03 — Work"
-        title="Selected work"
-        description="Systems designed and shipped to production."
+        title="Featured projects"
+        description="Sanitized public names for systems designed and shipped in banking environments."
       />
 
       <Reveal>
-        <div className="overflow-hidden rounded-xl border border-rule">
-          <div className="hidden grid-cols-[2fr_2.5fr_1.5fr_auto] gap-4 border-b border-rule bg-surface px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.12em] text-muted md:grid">
-            <span>Project</span>
-            <span>Summary</span>
-            <span>Stack</span>
-            <span>Status</span>
-          </div>
-
+        <div className="grid gap-5 md:grid-cols-2">
           {list.map((p, i) => {
             const title = p.Title || p.title;
             const summary = p.Summary || p.summary;
             const stack = (p.TechStack || p.techStack || "").split(",").filter(Boolean);
-            const featured = p.Featured ?? p.featured;
-            const repo = p.RepoUrl || p.repoUrl;
-            const live = p.LiveUrl || p.liveUrl;
+            const slug = p.Slug || p.slug;
+            const category = p.Category || p.category;
+            const highlights = p.Highlights || p.highlights || [];
+            const badge = p.Badge || (p.Featured ? "Featured" : "Project");
 
             return (
-              <motion.div
-                key={p.Id || p.id || title}
-                className={`row-glow grid grid-cols-1 gap-4 border-b border-rule px-6 py-7 last:border-b-0 md:grid-cols-[2fr_2.5fr_1.5fr_auto] md:items-center ${
-                  i % 2 === 0 ? "bg-surface/50" : "bg-surface2/40"
-                }`}
+              <motion.article
+                key={p.Id || title}
+                className="panel-glow flex flex-col rounded-xl border border-rule bg-surface p-6"
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div>
-                  <p className="mb-1 font-mono text-[11px] text-muted">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="font-display text-lg font-bold tracking-tightish text-paper">
-                    {title}
-                  </h3>
-                  <div className="mt-2 flex gap-4 text-sm font-medium">
-                    {repo && (
-                      <a href={repo} target="_blank" rel="noreferrer" className="link-underline text-verified">
-                        Repository
-                      </a>
-                    )}
-                    {live && (
-                      <a href={live} target="_blank" rel="noreferrer" className="link-underline text-verified">
-                        Live demo
-                      </a>
-                    )}
-                  </div>
+                <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <Stamp tone={badge === "Library" ? "wire" : "verified"} animate={false}>
+                    {badge}
+                  </Stamp>
+                  {category && <span className="text-xs font-medium text-muted">{category}</span>}
                 </div>
-
-                <p className="text-sm leading-relaxed text-muted">{summary}</p>
-
-                <div className="flex flex-wrap gap-2">
+                <h3 className="font-display text-lg font-bold tracking-tightish text-paper">{title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{summary}</p>
+                {highlights.length > 0 && (
+                  <ul className="mt-4 space-y-1.5 text-sm text-muted">
+                    {highlights.map((h) => (
+                      <li key={h} className="flex gap-2">
+                        <span className="text-verified">·</span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="mt-4 flex flex-wrap gap-2">
                   {stack.map((t) => (
                     <span
                       key={t}
@@ -76,11 +63,12 @@ export default function Projects({ projects = [] }) {
                     </span>
                   ))}
                 </div>
-
-                <div>
-                  {featured ? <Stamp tone="verified">Production</Stamp> : <Stamp tone="wire">Archive</Stamp>}
-                </div>
-              </motion.div>
+                {slug && (
+                  <Link to={`/work/${slug}`} className="mt-5 inline-flex text-sm font-semibold text-verified link-underline">
+                    Read case study →
+                  </Link>
+                )}
+              </motion.article>
             );
           })}
         </div>

@@ -15,9 +15,9 @@ export default function Experience({ experience = [] }) {
   return (
     <section id="experience" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
       <EntryHeading
-        code="04 — Experience"
+        code="06 — Experience"
         title="Experience"
-        description="Roles and impact, chronologically."
+        description="Selected work in banking payments middleware."
       />
       <ol className="relative space-y-10 border-l border-rule pl-8">
         {list.map((e, i) => {

@@ -29,19 +29,17 @@ export default function Skills({ skills = [] }) {
   }, {});
 
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <EntryHeading
-        code="02 — Skills"
+        code="Skills"
         title="Technical skills"
-        description="Production-proven tools I use day to day."
+        description="Prioritized from delivered banking systems—not every minor library."
       />
-      <Stagger className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
+      <Stagger className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
         {Object.entries(grouped).map(([category, items]) => (
           <StaggerItem key={category}>
             <div className="panel-glow h-full rounded-xl border border-rule bg-surface p-6">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-verified">
-                {category}
-              </p>
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-verified">{category}</p>
               <ul className="space-y-4">
                 {items.map((skill) => {
                   const name = skill.Name || skill.name;

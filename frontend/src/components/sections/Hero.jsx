@@ -1,25 +1,24 @@
 import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "../ui/MagneticButton.jsx";
 import AmbientOrbs from "../ui/AmbientOrbs.jsx";
+import { Link } from "react-router-dom";
 
 const ease = [0.22, 1, 0.36, 1];
 
 const highlights = [
-  { label: "Stack", value: ".NET · SQL Server" },
-  { label: "Domain", value: "Banking & payments" },
-  { label: "Focus", value: "APIs & reliability" },
+  { label: "Stack", value: ".NET 8 · SQL Server" },
+  { label: "Domain", value: "Banking payments" },
+  { label: "Focus", value: "CBS · Dual control" },
   { label: "Status", value: "Open to work", accent: true },
 ];
 
 export default function Hero({ profile }) {
   const reduce = useReducedMotion();
-  const name = profile?.fullName || profile?.FullName || "Your Name";
-  const headline =
-    profile?.headline || profile?.Headline || "Backend Engineer — Banking & Payments Systems";
-  const summary =
-    profile?.summary ||
-    profile?.Summary ||
-    "I design and ship production backend systems for banking platforms — card management APIs, document generation, and audit-ready approval flows.";
+  const name = profile?.fullName || profile?.FullName || "Akib Hasan";
+  const role = profile?.roleLabel || profile?.headline || "Banking Payment Middleware Engineer";
+  const subheadline =
+    profile?.subheadline ||
+    "I build .NET integration platforms that connect bank channels and branch operations to core banking and payment providers—with dual-control workflows, auditable transaction lifecycles, and recoverable settlement paths.";
   const location = profile?.location || profile?.Location || "Dhaka, Bangladesh";
   const githubUrl = profile?.githubUrl || profile?.GithubUrl;
   const linkedinUrl = profile?.linkedinUrl || profile?.LinkedinUrl;
@@ -52,7 +51,7 @@ export default function Hero({ profile }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.05, ease }}
           >
-            Backend Engineer
+            .NET · Banking Integration
           </motion.p>
 
           <motion.h1
@@ -70,7 +69,7 @@ export default function Hero({ profile }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.22, ease }}
           >
-            {headline}
+            {role}
           </motion.p>
 
           <motion.p
@@ -79,7 +78,7 @@ export default function Hero({ profile }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.32, ease }}
           >
-            {summary}
+            {subheadline}
           </motion.p>
 
           <motion.div
@@ -92,13 +91,19 @@ export default function Hero({ profile }) {
               href="#projects"
               className="rounded-md bg-verified px-5 py-2.5 text-sm font-semibold text-on-accent shadow-sm transition-opacity hover:opacity-90"
             >
-              View projects
+              View featured work
+            </MagneticButton>
+            <MagneticButton
+              href="#engineering"
+              className="rounded-md border border-rule bg-surface px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-verified hover:text-verified"
+            >
+              Engineering approach
             </MagneticButton>
             <MagneticButton
               href="#contact"
-              className="rounded-md border border-rule bg-surface px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-verified hover:text-verified"
+              className="rounded-md border border-rule px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-verified hover:text-verified"
             >
-              Contact me
+              Contact
             </MagneticButton>
             {linkedinUrl && (
               <a
@@ -140,16 +145,18 @@ export default function Hero({ profile }) {
                 transition={{ duration: 0.4, delay: 0.4 + i * 0.08, ease }}
               >
                 <span className="text-sm text-muted">{item.label}</span>
-                <span
-                  className={`text-right text-sm font-semibold ${
-                    item.accent ? "text-success" : "text-paper"
-                  }`}
-                >
+                <span className={`text-right text-sm font-semibold ${item.accent ? "text-success" : "text-paper"}`}>
                   {item.value}
                 </span>
               </motion.li>
             ))}
           </ul>
+          <p className="mt-5 text-xs leading-relaxed text-muted">
+            Open to backend / .NET roles centered on banking technology, payments, and enterprise integration.
+          </p>
+          <Link to="/work/utility-payments" className="mt-3 inline-block text-sm font-medium text-verified link-underline">
+            Start with a case study →
+          </Link>
         </motion.aside>
       </div>
     </section>

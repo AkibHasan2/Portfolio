@@ -51,12 +51,12 @@ export default function Contact({ profile }) {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
       <EntryHeading
-        code="05 — Contact"
+        code="08 — Contact"
         title="Let's connect"
         description={
           USE_DB
             ? "Send a message — I typically reply within one business day."
-            : "Prefer email? The form opens your mail client."
+            : "Open to backend / .NET banking roles. Prefer email? The form opens your mail client."
         }
       />
 
