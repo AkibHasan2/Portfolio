@@ -12,7 +12,7 @@ export default function Projects({ projects = [] }) {
       <EntryHeading
         code="03 — Work"
         title="Featured projects"
-        description="Sanitized public names for systems designed and shipped in banking environments."
+        description="Architecture-led case studies of banking middleware—sanitized public names, no proprietary source."
       />
 
       <Reveal>
@@ -64,17 +64,12 @@ export default function Projects({ projects = [] }) {
                   ))}
                 </div>
                 {slug && (
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    <Link
-                      to={`/demo/${slug}`}
-                      className="inline-flex rounded-md bg-verified px-3 py-1.5 text-sm font-semibold text-on-accent"
-                    >
-                      See demo
-                    </Link>
-                    <Link to={`/work/${slug}`} className="inline-flex items-center text-sm font-semibold text-verified link-underline">
-                      Case study →
-                    </Link>
-                  </div>
+                  <Link
+                    to={`/work/${slug}`}
+                    className="mt-5 inline-flex text-sm font-semibold text-verified link-underline"
+                  >
+                    Read case study →
+                  </Link>
                 )}
               </motion.article>
             );

@@ -124,7 +124,7 @@ export const staticProjects = [
       "Explicit failure statuses + audit trail",
     ],
     RepoUrl: "",
-    LiveUrl: "/demo/utility-payments",
+    LiveUrl: "",
   },
   {
     Id: "bond-platform",
@@ -142,7 +142,7 @@ export const staticProjects = [
       "Secure short-token certificate verification",
     ],
     RepoUrl: "",
-    LiveUrl: "/demo/bond-platform",
+    LiveUrl: "",
   },
   {
     Id: "fund-transfer",
@@ -160,7 +160,7 @@ export const staticProjects = [
       "Client txn uniqueness + status enquiry",
     ],
     RepoUrl: "",
-    LiveUrl: "/demo/fund-transfer",
+    LiveUrl: "",
   },
   {
     Id: "conversation-logging",
@@ -178,7 +178,7 @@ export const staticProjects = [
       "Plug-in DI/pipeline registration",
     ],
     RepoUrl: "",
-    LiveUrl: "/demo/conversation-logging",
+    LiveUrl: "",
   },
 ];
 
@@ -263,6 +263,23 @@ export const caseStudies = {
     title: "Enterprise Utility Bill Payment Integration Platform",
     category: "Banking Payments · Workflow",
     tech: [".NET 8", "ASP.NET Core", "SQL Server", "Dapper", "Netflix Conductor", "SignalR", "JWT"],
+    decisions: [
+      {
+        title: "Orchestrate long-running settlement outside the request",
+        detail:
+          "Approve → CBS debit → biller confirm can fail mid-path. Conductor owns retries/reruns so the API stays a controlled façade with durable status, not a fragile synchronous chain.",
+      },
+      {
+        title: "Explicit failure statuses over silent retries",
+        detail:
+          "CBSERROR / FAILED states plus audit trails make double-debit risk visible to operations instead of hiding it in undifferentiated exceptions.",
+      },
+      {
+        title: "Config-driven multi-biller façade",
+        detail:
+          "Heterogeneous provider auth and payloads stay behind one middleware contract so branch/channel UIs do not learn each biller’s quirks.",
+      },
+    ],
     problem:
       "Banks collect utility bills for many providers. Each provider has different APIs and auth; payments must debit the customer via core banking, then confirm with the biller—under dual control, branch rules, and service-time windows. Failures must be recoverable without double-charging customers.",
     context:
@@ -296,6 +313,23 @@ export const caseStudies = {
     title: "Enterprise Bond Investment & Transfer Platform",
     category: "Capital Markets Ops · Full-Stack",
     tech: [".NET 8", "Dapper", "SQL Server", "React", "Redux", "Vite", "iText7", "AES-GCM"],
+    decisions: [
+      {
+        title: "Inventory reserve before checker approval",
+        detail:
+          "Pending purchases lock bond units so two makers cannot oversell the same inventory; reject paths release reservations cleanly.",
+      },
+      {
+        title: "Dual-control for both purchase and transfer",
+        detail:
+          "Ownership change and payment posting are high-risk; maker/checker keeps branch capture separated from irreversible CBS and certificate issuance.",
+      },
+      {
+        title: "Short-lived verification tokens on certificates",
+        detail:
+          "QR-backed public verify without embedding long-lived secrets; old certificates invalidate when holdings transfer or split.",
+      },
+    ],
     problem:
       "Banks need a controlled channel for customers to buy bonds and later transfer ownership. Manual processing risks payment errors, weak dual control, inconsistent bond inventory, and hard-to-verify paper certificates.",
     context:
@@ -326,6 +360,23 @@ export const caseStudies = {
     title: "Enterprise Channel Fund Transfer Middleware",
     category: "Payments · Channel Integration",
     tech: [".NET 8", "ASP.NET Core", "Dapper", "SQL Server", "JWT", "Serilog", "HttpClient"],
+    decisions: [
+      {
+        title: "Channels never call CBS directly",
+        detail:
+          "A dedicated façade owns verify/transfer/status so partner onboarding stays configuration-driven and core banking stays isolated.",
+      },
+      {
+        title: "ClientTxnID uniqueness as the idempotency key",
+        detail:
+          "Duplicate channel posts are rejected before a second CBS credit, with status enquiry for safe partner retries.",
+      },
+      {
+        title: "Product-specific verify rules",
+        detail:
+          "Deposit, DPS, and loan credits share one API shape but branch into distinct CBS operations and restriction checks.",
+      },
+    ],
     problem:
       "External digital channels need a controlled way to credit bank accounts (deposits, DPS installments, loan repayments) without direct access to core banking.",
     context:
@@ -357,6 +408,23 @@ export const caseStudies = {
     title: "ASP.NET Core Conversation & API Logging Middleware",
     category: "Observability · Platform Library",
     tech: [".NET 8", "ASP.NET Core Middleware", "Dapper", "SQL Server"],
+    decisions: [
+      {
+        title: "Reusable library over per-host copy-paste",
+        detail:
+          "ConversationId + inbound/outbound SQL logging registers via DI/pipeline extensions so every host API gets the same correlation model.",
+      },
+      {
+        title: "Correlate outbound calls under the inbound id",
+        detail:
+          "ExternalApiLogger writes CBS/provider hops into the same conversation so support can reconstruct full chains from SQL.",
+      },
+      {
+        title: "Size limits and non-fatal external log failures",
+        detail:
+          "Large bodies truncate; failed log writes must not take down the business request path.",
+      },
+    ],
     problem:
       "APIs that span multiple services and external providers are hard to debug without a shared conversation ID and durable request/response logs.",
     context:

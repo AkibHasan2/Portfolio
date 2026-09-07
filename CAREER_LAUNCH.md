@@ -115,10 +115,9 @@ Create repo named exactly `AkibHasan2` (public), add `README.md`:
 Focus: ASP.NET Core · SQL Server · CBS integration · Maker/Checker · Conductor
 ```
 
-### Optional later demos (sanitized)
+### Optional later (only if ops-console quality)
 
-- Fake CBS stubs + maker/checker sample  
-- Conversation logging sample with local SQL  
+High-fidelity screenshots or one polished prototype — not ordinary click demos. Prefer case studies until visuals match production craft.
 
 Do **not** publish proprietary banking source, configs, credentials, account data, or production URLs.
 
