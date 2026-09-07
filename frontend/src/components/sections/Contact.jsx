@@ -144,8 +144,16 @@ export default function Contact({ profile }) {
           <Reveal direction="left" className="space-y-1 text-sm text-muted">
             <p className="mb-4 text-sm leading-relaxed text-muted">
               Prefer a one-pager?{" "}
+              <a
+                href={`${import.meta.env.BASE_URL}Akib-Hasan-Resume.pdf`}
+                download="Akib-Hasan-Resume.pdf"
+                className="font-semibold text-verified link-underline"
+              >
+                Download PDF resume
+              </a>
+              {" · "}
               <Link to="/resume" className="font-semibold text-verified link-underline">
-                View resume
+                View online
               </Link>
               .
             </p>

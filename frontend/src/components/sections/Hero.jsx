@@ -116,6 +116,13 @@ export default function Hero({ profile }) {
             >
               Resume
             </Link>
+            <a
+              href={`${import.meta.env.BASE_URL}Akib-Hasan-Resume.pdf`}
+              download="Akib-Hasan-Resume.pdf"
+              className="rounded-md border border-rule px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-verified hover:text-verified"
+            >
+              Download PDF
+            </a>
             <MagneticButton
               href="#contact"
               className="rounded-md border border-rule px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-verified hover:text-verified"

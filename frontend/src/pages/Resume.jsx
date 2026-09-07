@@ -10,6 +10,8 @@ import {
   staticProjects,
 } from "../data/static.js";
 
+const resumePdfHref = `${import.meta.env.BASE_URL}Akib-Hasan-Resume.pdf`;
+
 export default function Resume() {
   const homePath = import.meta.env.BASE_URL || "/";
   const profile = staticProfile;
@@ -24,119 +26,144 @@ export default function Resume() {
       <Navbar name={profile.fullName.split(" ")[0]} homeHref={homePath} />
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-          <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="flex flex-wrap items-start justify-between gap-4 print:hidden">
             <div>
               <Link to="/" className="text-sm font-medium text-muted hover:text-verified">
                 ← Portfolio
               </Link>
               <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tightish text-paper md:text-4xl">
-                {profile.fullName}
+                Resume
               </h1>
-              <p className="mt-2 font-display text-lg font-semibold text-paper/90">{profile.roleLabel}</p>
-              <p className="mt-1 text-sm text-muted">{profile.roleDetail}</p>
+              <p className="mt-2 max-w-md text-sm text-muted">
+                Standard one–two page CV for recruiters. Download the PDF for applications and ATS uploads.
+              </p>
             </div>
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="rounded-md border border-rule px-3 py-2 text-xs font-semibold text-paper hover:border-verified print:hidden"
-            >
-              Print / Save PDF
-            </button>
-          </div>
-
-          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
-            <span>{profile.location}</span>
-            <a href={`mailto:${profile.email}`} className="hover:text-verified">
-              {profile.email}
-            </a>
-            <a href={profile.linkedinUrl} target="_blank" rel="noreferrer" className="hover:text-verified">
-              LinkedIn
-            </a>
-            <a href={profile.githubUrl} target="_blank" rel="noreferrer" className="hover:text-verified">
-              GitHub
-            </a>
-            <a href="https://AkibHasan2.github.io/Portfolio/" className="hover:text-verified">
-              Portfolio
-            </a>
+            <div className="flex flex-wrap gap-2">
+              <a
+                href={resumePdfHref}
+                download="Akib-Hasan-Resume.pdf"
+                className="rounded-md bg-verified px-4 py-2.5 text-sm font-semibold text-on-accent shadow-sm hover:opacity-90"
+              >
+                Download PDF
+              </a>
+              <a
+                href={resumePdfHref}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-md border border-rule px-4 py-2.5 text-sm font-semibold text-paper hover:border-verified"
+              >
+                Open PDF
+              </a>
+            </div>
           </div>
         </motion.div>
 
-        <section className="mt-10">
-          <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-verified">Summary</h2>
-          <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">{profile.summary}</p>
-        </section>
+        {/* On-page preview mirrors the PDF content */}
+        <article className="mt-10 rounded-xl border border-rule bg-surface p-6 md:p-8">
+          <header className="border-b border-rule pb-5 text-center">
+            <h2 className="font-display text-2xl font-extrabold text-paper">{profile.fullName}</h2>
+            <p className="mt-1 font-display text-base font-semibold text-verified">{profile.roleLabel}</p>
+            <p className="mt-1 text-sm text-muted">{profile.roleDetail}</p>
+            <p className="mt-3 text-xs text-muted">
+              {profile.location} ·{" "}
+              <a href={`mailto:${profile.email}`} className="hover:text-verified">
+                {profile.email}
+              </a>{" "}
+              ·{" "}
+              <a href={profile.linkedinUrl} target="_blank" rel="noreferrer" className="hover:text-verified">
+                LinkedIn
+              </a>{" "}
+              ·{" "}
+              <a href={profile.githubUrl} target="_blank" rel="noreferrer" className="hover:text-verified">
+                GitHub
+              </a>
+            </p>
+          </header>
 
-        <section className="mt-10">
-          <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-verified">Open to</h2>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {(profile.openTo || []).map((r) => (
-              <li key={r} className="rounded-md border border-rule bg-surface px-2.5 py-1 text-xs font-medium text-paper">
-                {r}
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section className="mt-6">
+            <h3 className="font-display text-xs font-bold uppercase tracking-[0.14em] text-verified">
+              Professional summary
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{profile.summary}</p>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-verified">Experience</h2>
-          {staticExperience.map((exp) => (
-            <div key={exp.Company} className="mt-4">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <p className="font-display text-base font-bold text-paper">
-                  {exp.Role} · {exp.Company}
-                </p>
-                <p className="text-xs text-muted">
-                  {exp.StartDate
-                    ? `${new Date(exp.StartDate).toLocaleString("en", { month: "short", year: "numeric" })} — Present`
-                    : "Present"}
-                </p>
+          <section className="mt-7">
+            <h3 className="font-display text-xs font-bold uppercase tracking-[0.14em] text-verified">Experience</h3>
+            {staticExperience.map((exp) => (
+              <div key={exp.Company} className="mt-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <p className="font-display text-sm font-bold text-paper">
+                    {exp.Role} | {exp.Company}
+                  </p>
+                  <p className="text-xs text-muted">
+                    {exp.StartDate
+                      ? `${new Date(exp.StartDate).toLocaleString("en", { month: "short", year: "numeric" })} – Present`
+                      : "Present"}
+                  </p>
+                </div>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">{exp.Summary}</p>
+                <ul className="mt-3 space-y-2">
+                  {resumeBullets.map((b) => (
+                    <li key={b} className="flex gap-2 text-sm leading-relaxed text-muted">
+                      <span className="text-verified">•</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{exp.Summary}</p>
+            ))}
+          </section>
+
+          <section className="mt-7">
+            <h3 className="font-display text-xs font-bold uppercase tracking-[0.14em] text-verified">Key projects</h3>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              {staticProjects.map((p) => (
+                <li key={p.Id} className="flex gap-2">
+                  <span className="text-verified">•</span>
+                  <span>
+                    <Link to={`/work/${p.Slug}`} className="font-medium text-paper hover:text-verified">
+                      {p.Title}
+                    </Link>
+                    {" — "}
+                    {(p.Highlights || []).slice(0, 2).join("; ")}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mt-7">
+            <h3 className="font-display text-xs font-bold uppercase tracking-[0.14em] text-verified">
+              Technical skills
+            </h3>
+            <div className="mt-3 space-y-2">
+              {Object.entries(skillsByCat).map(([cat, names]) => (
+                <p key={cat} className="text-sm text-muted">
+                  <span className="font-semibold text-paper">{cat}: </span>
+                  {names.join(" · ")}
+                </p>
+              ))}
             </div>
-          ))}
-        </section>
+          </section>
 
-        <section className="mt-10">
-          <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-verified">Selected work</h2>
-          <ul className="mt-4 space-y-3">
-            {resumeBullets.map((b) => (
-              <li key={b} className="flex gap-2.5 text-sm leading-relaxed text-muted">
-                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-verified" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+          <section className="mt-7">
+            <h3 className="font-display text-xs font-bold uppercase tracking-[0.14em] text-verified">Target roles</h3>
+            <p className="mt-2 text-sm text-muted">{(profile.openTo || []).join(" · ")}</p>
+          </section>
+        </article>
 
-        <section className="mt-10">
-          <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-verified">Featured systems</h2>
-          <ul className="mt-3 space-y-2 text-sm text-muted">
-            {staticProjects.map((p) => (
-              <li key={p.Id}>
-                <Link to={`/work/${p.Slug}`} className="font-medium text-paper hover:text-verified">
-                  {p.Title}
-                </Link>
-                <span className="text-muted"> — {p.Category}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-verified">Skills</h2>
-          <div className="mt-4 space-y-3">
-            {Object.entries(skillsByCat).map(([cat, names]) => (
-              <div key={cat}>
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted">{cat}</p>
-                <p className="mt-1 text-sm text-paper">{names.join(" · ")}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <p className="mt-12 border-t border-rule pt-6 text-xs text-muted">
-          Proprietary banking source is not published. Case studies use sanitized public names.
-        </p>
+        <div className="mt-8 flex flex-wrap gap-3 print:hidden">
+          <a
+            href={resumePdfHref}
+            download="Akib-Hasan-Resume.pdf"
+            className="rounded-md bg-verified px-4 py-2.5 text-sm font-semibold text-on-accent"
+          >
+            Download PDF resume
+          </a>
+          <Link to="/#contact" className="rounded-md border border-rule px-4 py-2.5 text-sm font-semibold text-paper">
+            Contact
+          </Link>
+        </div>
       </main>
       <Footer profile={profile} />
     </div>
