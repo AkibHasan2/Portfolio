@@ -15,7 +15,7 @@ export default function Footer({ profile }) {
         transition={{ duration: 0.5 }}
       >
         <p>
-          © {new Date().getFullYear()} {name}. Banking payment middleware — sanitized public portfolio.
+          © {new Date().getFullYear()} {name}. .NET integration engineer — sanitized public portfolio.
         </p>
         <div className="flex gap-6 font-medium">
           {github && (

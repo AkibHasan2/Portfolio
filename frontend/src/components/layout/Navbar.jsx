@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import ThemeToggle from "../ui/ThemeToggle.jsx";
 
@@ -10,6 +11,8 @@ const LINKS = [
   { href: "#experience", label: "Experience", id: "experience" },
   { href: "#contact", label: "Contact", id: "contact" },
 ];
+
+const PAGE_LINKS = [{ to: "/resume", label: "Resume" }];
 
 export default function Navbar({ name = "Portfolio", homeHref = "#top" }) {
   const [scrolled, setScrolled] = useState(false);
@@ -76,6 +79,13 @@ export default function Navbar({ name = "Portfolio", homeHref = "#top" }) {
               )}
             </li>
           ))}
+          {PAGE_LINKS.map((link) => (
+            <li key={link.to}>
+              <Link to={link.to} className="transition-colors hover:text-paper">
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <div className="flex items-center gap-2.5">
@@ -122,6 +132,13 @@ export default function Navbar({ name = "Portfolio", homeHref = "#top" }) {
                   >
                     {link.label}
                   </a>
+                </li>
+              ))}
+              {PAGE_LINKS.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="hover:text-paper" onClick={() => setMenuOpen(false)}>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

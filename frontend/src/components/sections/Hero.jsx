@@ -7,21 +7,23 @@ const ease = [0.22, 1, 0.36, 1];
 
 const highlights = [
   { label: "Stack", value: ".NET 8 · SQL Server" },
-  { label: "Domain", value: "Banking payments" },
-  { label: "Focus", value: "CBS · Dual control" },
+  { label: "Craft", value: "APIs · Integration" },
+  { label: "Domain proof", value: "Banking payments" },
   { label: "Status", value: "Open to work", accent: true },
 ];
 
 export default function Hero({ profile }) {
   const reduce = useReducedMotion();
   const name = profile?.fullName || profile?.FullName || "Akib Hasan";
-  const role = profile?.roleLabel || profile?.headline || "Banking Payment Middleware Engineer";
+  const role = profile?.roleLabel || profile?.headline || ".NET Backend & Integration Engineer";
+  const roleDetail = profile?.roleDetail || "Payments middleware · Core banking APIs · Dual-control workflows";
   const subheadline =
     profile?.subheadline ||
-    "I build .NET integration platforms that connect bank channels and branch operations to core banking and payment providers—with dual-control workflows, auditable transaction lifecycles, and recoverable settlement paths.";
+    "I design ASP.NET Core middleware for controlled integrations—dual-control workflows, auditable lifecycles, and recoverable settlement paths.";
   const location = profile?.location || profile?.Location || "Dhaka, Bangladesh";
   const githubUrl = profile?.githubUrl || profile?.GithubUrl;
   const linkedinUrl = profile?.linkedinUrl || profile?.LinkedinUrl;
+  const openTo = profile?.openTo || [];
 
   return (
     <section id="top" className="relative overflow-hidden bg-grid-fade px-6 pb-24 pt-20 md:pt-28">
@@ -51,7 +53,7 @@ export default function Hero({ profile }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.05, ease }}
           >
-            .NET · Banking Integration
+            .NET · Enterprise Integration
           </motion.p>
 
           <motion.h1
@@ -70,6 +72,15 @@ export default function Hero({ profile }) {
             transition={{ duration: 0.55, delay: 0.22, ease }}
           >
             {role}
+          </motion.p>
+
+          <motion.p
+            className="mt-2 max-w-xl text-sm font-medium text-verified md:text-base"
+            initial={reduce ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.28, ease }}
+          >
+            {roleDetail}
           </motion.p>
 
           <motion.p
@@ -99,6 +110,12 @@ export default function Hero({ profile }) {
             >
               Engineering approach
             </MagneticButton>
+            <Link
+              to="/resume"
+              className="rounded-md border border-rule px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-verified hover:text-verified"
+            >
+              Resume
+            </Link>
             <MagneticButton
               href="#contact"
               className="rounded-md border border-rule px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-verified hover:text-verified"
@@ -151,10 +168,19 @@ export default function Hero({ profile }) {
               </motion.li>
             ))}
           </ul>
-          <p className="mt-5 text-xs leading-relaxed text-muted">
-            Open to backend / .NET roles centered on banking technology, payments, and enterprise integration.
-          </p>
-          <Link to="/work/utility-payments" className="mt-3 inline-block text-sm font-medium text-verified link-underline">
+          {openTo.length > 0 && (
+            <div className="mt-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">Open to</p>
+              <ul className="mt-2 flex flex-wrap gap-1.5">
+                {openTo.map((r) => (
+                  <li key={r} className="rounded border border-rule px-2 py-0.5 text-[11px] font-medium text-paper">
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <Link to="/work/utility-payments" className="mt-4 inline-block text-sm font-medium text-verified link-underline">
             Start with a case study →
           </Link>
         </motion.aside>

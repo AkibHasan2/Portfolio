@@ -7,7 +7,7 @@ export default function About({ profile }) {
       <EntryHeading
         code="01 — About"
         title="About"
-        description="Banking domain, integration craftsmanship, dual-control and reliability."
+        description="Enterprise .NET craft—proven in banking payments, built for integration reliability."
       />
       <Stagger className="grid gap-8 md:grid-cols-3" stagger={0.12}>
         <StaggerItem className="md:col-span-2 space-y-4">
@@ -28,11 +28,11 @@ export default function About({ profile }) {
             </div>
             <div className="flex justify-between border-b border-rule pb-3">
               <span>Focus</span>
-              <span className="font-medium text-paper">Payments middleware</span>
+              <span className="font-medium text-paper">APIs · Integration</span>
             </div>
             <div className="flex justify-between border-b border-rule pb-3">
-              <span>Strength</span>
-              <span className="font-medium text-paper">CBS · Dual control</span>
+              <span>Proof domain</span>
+              <span className="font-medium text-paper">Banking payments</span>
             </div>
             <div className="flex justify-between">
               <span>Availability</span>

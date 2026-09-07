@@ -10,6 +10,7 @@ import Experience from "../components/sections/Experience.jsx";
 import Architecture from "../components/sections/Architecture.jsx";
 import OtherProjects from "../components/sections/OtherProjects.jsx";
 import Contact from "../components/sections/Contact.jsx";
+import Timeline from "../components/sections/Timeline.jsx";
 import { useFetch } from "../hooks/useFetch.js";
 import { api } from "../services/api.js";
 import {
@@ -21,6 +22,7 @@ import {
   expertiseAreas,
   capabilities,
   architectureDiagrams,
+  capabilityTimeline,
 } from "../data/static.js";
 
 export default function Home() {
@@ -39,6 +41,7 @@ export default function Home() {
         <About profile={profile || staticProfile} />
         <Expertise areas={expertiseAreas} />
         <Projects projects={featured.length ? featured : staticProjects} />
+        <Timeline steps={capabilityTimeline} />
         <Capabilities items={capabilities} />
         <Architecture diagrams={architectureDiagrams} />
         <Experience experience={experience?.length ? experience : staticExperience} />

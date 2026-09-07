@@ -6,15 +6,17 @@
 export const staticProfile = {
   fullName: "Akib Hasan",
   FullName: "Akib Hasan",
-  roleLabel: "Banking Payment Middleware Engineer",
-  headline: "Banking Payment Middleware Engineer",
-  Headline: "Banking Payment Middleware Engineer",
+  /** Lead with transferable craft; banking is the proof domain (PORTFOLIO_MASTER §1). */
+  roleLabel: ".NET Backend & Integration Engineer",
+  headline: ".NET Backend & Integration Engineer",
+  Headline: ".NET Backend & Integration Engineer",
+  roleDetail: "Payments middleware · Core banking APIs · Dual-control workflows",
   subheadline:
-    "I build .NET integration platforms that connect bank channels and branch operations to core banking and payment providers—with dual-control workflows, auditable transaction lifecycles, and recoverable settlement paths.",
+    "I design ASP.NET Core middleware that connects channels and operations systems to external APIs and core platforms—with dual-control authorization, auditable transaction lifecycles, and recoverable settlement paths. My deepest production work is in banking payments; the same craft applies to enterprise integration and fintech backends.",
   summary:
-    "Backend-focused software engineer specializing in banking payments and enterprise integration on the .NET platform. I design and implement ASP.NET Core middleware that sits between digital/branch channels and core banking systems, handling account verification, fund movement, multi-provider bill settlement, and dual-control (maker/checker) authorization. My work emphasizes recoverable workflows, explicit transaction status lifecycles, SQL-backed audit trails, and careful integration with heterogeneous external APIs. I also deliver React operations interfaces for complex branch workflows and reusable logging libraries that improve end-to-end API traceability.",
+    "Backend-focused software engineer on the .NET platform, specializing in enterprise API middleware, system integration, and controlled money-movement workflows. In banking environments I connect digital/branch channels to core banking and payment providers—handling account verification, fund movement, multi-provider bill settlement, and maker/checker authorization. I emphasize recoverable workflows, explicit status lifecycles, SQL-backed audit trails, and careful integration with heterogeneous external APIs. I also deliver React operations interfaces when branch workflows demand it, and reusable logging libraries for end-to-end API traceability.",
   Summary:
-    "Backend-focused software engineer specializing in banking payments and enterprise integration on the .NET platform. I design and implement ASP.NET Core middleware that sits between digital/branch channels and core banking systems, handling account verification, fund movement, multi-provider bill settlement, and dual-control (maker/checker) authorization. My work emphasizes recoverable workflows, explicit transaction status lifecycles, SQL-backed audit trails, and careful integration with heterogeneous external APIs. I also deliver React operations interfaces for complex branch workflows and reusable logging libraries that improve end-to-end API traceability.",
+    "Backend-focused software engineer on the .NET platform, specializing in enterprise API middleware, system integration, and controlled money-movement workflows. In banking environments I connect digital/branch channels to core banking and payment providers—handling account verification, fund movement, multi-provider bill settlement, and maker/checker authorization. I emphasize recoverable workflows, explicit status lifecycles, SQL-backed audit trails, and careful integration with heterogeneous external APIs. I also deliver React operations interfaces when branch workflows demand it, and reusable logging libraries for end-to-end API traceability.",
   location: "Dhaka, Bangladesh",
   Location: "Dhaka, Bangladesh",
   email: "akib.hasan.learn@gmail.com.bd",
@@ -24,8 +26,56 @@ export const staticProfile = {
   linkedinUrl: "https://www.linkedin.com/in/akib-hasan-iz",
   LinkedinUrl: "https://www.linkedin.com/in/akib-hasan-iz",
   positioning:
-    "I build enterprise .NET middleware that connects bank channels and branch operations to core banking and external payment providers—implementing dual-control workflows, reliable settlement paths, and audit-friendly transaction handling for regulated banking environments.",
+    "Strongest where reliability, controlled integrations, and auditability matter—proven in regulated banking payments, transferable to enterprise .NET backends, fintech, and partner API platforms.",
+  openTo: [
+    "Backend / .NET Engineer",
+    "API & Integration Engineer",
+    "Payments / Fintech Engineer",
+    "Banking technology roles",
+  ],
 };
+
+/** PORTFOLIO_MASTER §17 — capability progression (not fabricated job chronology). */
+export const capabilityTimeline = [
+  {
+    title: "Backend API foundations",
+    detail: "ASP.NET Core services, SQL Server / Dapper, layered contracts.",
+  },
+  {
+    title: "Enterprise payment integration",
+    detail: "CBS façades, channel fund transfer, multi-biller utility settlement.",
+  },
+  {
+    title: "Workflow & dual control",
+    detail: "Maker/Checker, Conductor orchestration, inventory state machines.",
+  },
+  {
+    title: "Full-stack ops delivery",
+    detail: "React bond operations UI, certificates, role-gated branch flows.",
+  },
+  {
+    title: "Platform & observability",
+    detail: "Reusable conversation-logging middleware across host APIs.",
+  },
+  {
+    title: "Operations automation",
+    detail: "Node.js balance monitoring and alert reliability controls.",
+  },
+];
+
+/** PORTFOLIO_MASTER §13 — public-safe CV bullets (no invented metrics). */
+export const resumeBullets = [
+  "Developed ASP.NET Core 8 utility-payment middleware integrating core banking and multiple biller APIs under a maker/checker model.",
+  "Implemented Netflix Conductor workflows for approve → CBS debit → biller confirmation with failure tracking and task retry/rerun.",
+  "Built .NET 8 bond middleware APIs for investment create/approve/reject using Dapper and SQL Server stored procedures.",
+  "Integrated CBS payment posting for account debit and cheque settlement during checker authorization of bond operations.",
+  "Implemented bond transfer workflows including holdings search, partial transfer, inventory reallocation, and certificate invalidation.",
+  "Developed React operations SPA for maker/checker bond flows with role-based access, validation, and reporting exports.",
+  "Generated verifiable bond PDF certificates using short-token QR links protected with AES-GCM and hashed token storage.",
+  "Developed channel fund-transfer middleware enabling digital channels to verify and credit deposit, DPS, and loan accounts via CBS APIs.",
+  "Implemented product-specific validation, client transaction uniqueness checks, and SQL-backed request/response audit logging.",
+  "Built a reusable ASP.NET Core conversation-logging middleware for correlation IDs and durable inbound/outbound API logging to SQL Server.",
+];
 
 export const staticSkills = [
   { Category: "Backend", Name: "C# / .NET 8", Proficiency: 5 },
@@ -48,8 +98,8 @@ export const staticSkills = [
 
 export const expertiseAreas = [
   {
-    title: "Core Banking Integration",
-    description: "HTTP façades over enquiry, debit, cheque, SDMC, and loan-repayment style CBS APIs.",
+    title: "Enterprise API Integration",
+    description: "HTTP façades over enquiry, debit, cheque, and product-specific core/platform APIs.",
   },
   {
     title: "Payment Middleware",
@@ -203,7 +253,7 @@ export const staticExperience = [
     StartDate: "2023-01-01",
     EndDate: null,
     Summary:
-      "Building banking payment and investment middleware on .NET—core banking integration, maker/checker workflows, multi-provider settlement APIs, SQL-backed audit trails, and selected React operations UIs for branch workflows.",
+      "Building payment and investment middleware on .NET—core banking integration, maker/checker workflows, multi-provider settlement APIs, SQL-backed audit trails, and selected React operations UIs for branch workflows.",
   },
 ];
 

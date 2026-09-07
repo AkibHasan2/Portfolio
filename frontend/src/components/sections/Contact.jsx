@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import EntryHeading from "../ui/EntryHeading.jsx";
 import Button from "../ui/Button.jsx";
@@ -16,6 +17,7 @@ export default function Contact({ profile }) {
   const location = profile?.location || profile?.Location || "—";
   const githubUrl = profile?.githubUrl || profile?.GithubUrl;
   const linkedinUrl = profile?.linkedinUrl || profile?.LinkedinUrl;
+  const openTo = profile?.openTo || [];
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -53,11 +55,7 @@ export default function Contact({ profile }) {
       <EntryHeading
         code="08 — Contact"
         title="Let's connect"
-        description={
-          USE_DB
-            ? "Send a message — I typically reply within one business day."
-            : "Open to backend / .NET banking roles. Prefer email? The form opens your mail client."
-        }
+        description="Open to backend /.NET and integration roles—banking, fintech, or enterprise platforms."
       />
 
       <Stagger className="grid gap-10 md:grid-cols-2" stagger={0.12}>
@@ -144,9 +142,25 @@ export default function Contact({ profile }) {
 
         <StaggerItem>
           <Reveal direction="left" className="space-y-1 text-sm text-muted">
-            <p className="mb-5 text-sm leading-relaxed text-muted">
-              Also find me on LinkedIn and GitHub — happy to connect with recruiters, hiring managers, and engineering teams.
+            <p className="mb-4 text-sm leading-relaxed text-muted">
+              Prefer a one-pager?{" "}
+              <Link to="/resume" className="font-semibold text-verified link-underline">
+                View resume
+              </Link>
+              .
             </p>
+            {openTo.length > 0 && (
+              <div className="mb-5 rounded-xl border border-rule bg-surface p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">Open to</p>
+                <ul className="mt-2 flex flex-wrap gap-1.5">
+                  {openTo.map((r) => (
+                    <li key={r} className="rounded border border-rule px-2 py-0.5 text-[11px] font-medium text-paper">
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {[
               {
                 label: "Email",

@@ -28,19 +28,22 @@ Open https://www.linkedin.com/in/akib-hasan-iz → **pencil** on intro / About.
 ### 1. Headline (copy)
 
 ```text
-.NET Banking Integration Engineer | Payments Middleware · Core Banking APIs · Maker/Checker Workflows
+.NET Backend & Integration Engineer | Payments Middleware · Enterprise APIs · Dual-Control Workflows
 ```
 
 ### 2. About (paste, then edit lightly in your voice)
 
 ```text
-I specialize in enterprise .NET middleware for banking payments and investment operations. My work connects branch and digital channels to core banking and external providers through controlled APIs—emphasizing dual-control authorization, explicit transaction statuses, recoverable workflows, and auditability.
+I design enterprise .NET middleware for system integration and controlled money-movement workflows. My production depth is in banking payments—connecting channels and branch operations to core banking and external providers through dual-control authorization, explicit transaction statuses, recoverable workflows, and auditability.
 
-Recent work includes utility bill payment orchestration with workflow engines, bond purchase/transfer platforms with inventory and certificate issuance, channel fund-transfer APIs for deposit/DPS/loan credits, and reusable conversation-logging middleware for API traceability. I also build React interfaces for complex maker/checker operations when the workflow demands it.
+The same craft applies beyond banks: partner APIs, fintech backends, and enterprise integration platforms that need reliability over hype.
 
-I care about integration correctness, failure visibility, and operational safety in regulated environments. Open to backend/.NET roles centered on banking technology, payments, and enterprise integration.
+Recent work includes utility bill payment orchestration with workflow engines, bond purchase/transfer platforms with inventory and certificate issuance, channel fund-transfer APIs for deposit/DPS/loan credits, and reusable conversation-logging middleware for API traceability.
+
+Open to: Backend /.NET Engineer · API & Integration Engineer · Payments / Fintech · Banking technology.
 
 Portfolio: https://AkibHasan2.github.io/Portfolio/
+Resume: https://AkibHasan2.github.io/Portfolio/resume
 Email: akib.hasan.learn@gmail.com.bd
 ```
 

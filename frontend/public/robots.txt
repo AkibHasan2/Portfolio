@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://AkibHasan2.github.io/Portfolio/sitemap.xml

@@ -12,4 +12,6 @@ export {
   capabilities,
   architectureDiagrams,
   caseStudies,
+  capabilityTimeline,
+  resumeBullets,
 } from "./portfolio.js";

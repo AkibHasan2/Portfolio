@@ -146,3 +146,16 @@ body {
     @apply inline-flex items-center gap-1.5 rounded-md border border-rule bg-surface2 px-2.5 py-1 text-xs font-medium tracking-wide text-muted;
   }
 }
+
+@media print {
+  .grain,
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
