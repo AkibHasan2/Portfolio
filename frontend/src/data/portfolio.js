@@ -250,7 +250,7 @@ export const staticExperience = [
   {
     Company: "Jamuna Bank PLC",
     Role: ".NET / C# Developer",
-    StartDate: "2023-01-01",
+    StartDate: "2019-11-26",
     EndDate: null,
     Summary:
       "Building payment and investment middleware on .NET—core banking integration, maker/checker workflows, multi-provider settlement APIs, SQL-backed audit trails, and selected React operations UIs for branch workflows.",
