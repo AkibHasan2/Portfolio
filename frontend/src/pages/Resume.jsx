@@ -85,7 +85,11 @@ export default function Resume() {
                 <p className="font-display text-base font-bold text-paper">
                   {exp.Role} · {exp.Company}
                 </p>
-                <p className="text-xs text-muted">2023 — Present</p>
+                <p className="text-xs text-muted">
+                  {exp.StartDate
+                    ? `${new Date(exp.StartDate).toLocaleString("en", { month: "short", year: "numeric" })} — Present`
+                    : "Present"}
+                </p>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted">{exp.Summary}</p>
             </div>
