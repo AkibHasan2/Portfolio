@@ -56,7 +56,7 @@ export default function Navbar({ name = "Portfolio", homeHref = "#top" }) {
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href={homeHref} className="font-display text-xl font-medium tracking-tight text-paper">
+        <a href={homeHref} className="font-display text-lg font-bold tracking-tight text-paper">
           {name}
           <span className="text-verified">.</span>
         </a>

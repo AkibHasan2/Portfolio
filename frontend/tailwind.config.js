@@ -18,8 +18,8 @@ export default {
         success: "rgb(var(--success) / <alpha-value>)",
       },
       fontFamily: {
-        display: ["'Newsreader'", "Georgia", "serif"],
-        body: ["'Source Sans 3'", "system-ui", "sans-serif"],
+        display: ["'Plus Jakarta Sans'", "Inter", "system-ui", "sans-serif"],
+        body: ["'Inter'", "system-ui", "sans-serif"],
         mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
       },
       backgroundImage: {

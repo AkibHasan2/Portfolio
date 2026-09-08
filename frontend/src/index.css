@@ -2,42 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Staff-engineer editorial — warm paper + navy ink (Stripe / Linear / consulting brief) */
+/* Product-site canvas — Linear / Vercel register */
 :root,
-[data-theme="light"] {
-  --ink: 247 244 238;
-  --surface: 255 252 247;
-  --surface2: 240 235 226;
-  --paper: 22 28 36;
-  --muted: 92 84 74;
-  --rule: 214 206 194;
-  --verified: 15 61 92;
-  --amber: 122 90 42;
-  --wire: 15 61 92;
-  --on-accent: 247 244 238;
-  --success: 30 107 72;
-  --grain-opacity: 0.035;
-  --body-wash: linear-gradient(180deg, #f7f4ee 0%, #f3efe7 100%);
-  --grid-fade: linear-gradient(180deg, #f7f4ee 0%, #f3efe7 100%);
-  color-scheme: light;
+[data-theme="dark"] {
+  --ink: 7 8 10;
+  --surface: 16 17 20;
+  --surface2: 24 26 31;
+  --paper: 244 244 245;
+  --muted: 161 161 170;
+  --rule: 39 40 46;
+  --verified: 129 140 248;
+  --amber: 214 176 106;
+  --wire: 165 180 252;
+  --on-accent: 7 8 10;
+  --success: 110 231 183;
+  --grain-opacity: 0.018;
+  --body-wash:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(129, 140, 248, 0.22), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 90% 0%, rgba(56, 189, 248, 0.08), transparent 50%),
+    #07080a;
+  --grid-fade: none;
+  color-scheme: dark;
 }
 
-[data-theme="dark"] {
-  --ink: 14 18 24;
-  --surface: 20 26 34;
-  --surface2: 28 36 46;
-  --paper: 236 230 220;
-  --muted: 168 158 144;
-  --rule: 48 58 70;
-  --verified: 201 168 106;
-  --amber: 201 168 106;
-  --wire: 168 196 220;
-  --on-accent: 14 18 24;
-  --success: 120 176 140;
-  --grain-opacity: 0.04;
-  --body-wash: linear-gradient(180deg, #0e1218 0%, #121820 100%);
-  --grid-fade: linear-gradient(180deg, #0e1218 0%, #121820 100%);
-  color-scheme: dark;
+[data-theme="light"] {
+  --ink: 250 250 251;
+  --surface: 255 255 255;
+  --surface2: 244 244 245;
+  --paper: 9 9 11;
+  --muted: 82 82 91;
+  --rule: 228 228 231;
+  --verified: 79 70 229;
+  --amber: 146 106 24;
+  --wire: 79 70 229;
+  --on-accent: 255 255 255;
+  --success: 5 122 85;
+  --grain-opacity: 0.02;
+  --body-wash:
+    radial-gradient(ellipse 80% 45% at 50% -12%, rgba(79, 70, 229, 0.1), transparent 55%),
+    #fafafa;
+  --grid-fade: none;
+  color-scheme: light;
 }
 
 html {
@@ -134,7 +139,26 @@ body {
   }
 
   .pro-badge {
-    @apply inline-flex items-center gap-1.5 rounded-md border border-rule bg-surface2 px-2.5 py-1 text-xs font-medium tracking-wide text-muted;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-rule bg-surface/80 px-3 py-1 text-xs font-medium tracking-wide text-muted backdrop-blur;
+  }
+
+  .hero-glow {
+    background:
+      radial-gradient(ellipse 55% 40% at 50% 0%, rgb(var(--verified) / 0.28), transparent 60%);
+  }
+
+  .glass {
+    background: rgb(var(--surface) / 0.72);
+    border: 1px solid rgb(var(--rule));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+    backdrop-filter: blur(16px);
+  }
+
+  .text-shine {
+    background: linear-gradient(180deg, rgb(var(--paper)) 30%, rgb(var(--verified)) 140%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
 

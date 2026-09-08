@@ -6,10 +6,10 @@ const ThemeContext = createContext({
   toggleTheme: () => {},
 });
 
-const STORAGE_KEY = "portfolio-theme";
+const STORAGE_KEY = "portfolio-theme-v2";
 
 function getInitialTheme() {
-  if (typeof document === "undefined") return "light";
+  if (typeof document === "undefined") return "dark";
   const attr = document.documentElement.getAttribute("data-theme");
   if (attr === "light" || attr === "dark") return attr;
   try {
@@ -18,7 +18,7 @@ function getInitialTheme() {
   } catch {
     /* ignore */
   }
-  return "light";
+  return "dark";
 }
 
 function applyTheme(theme) {

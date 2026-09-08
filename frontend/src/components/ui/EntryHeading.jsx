@@ -16,7 +16,7 @@ export default function EntryHeading({ code, title, description }) {
         >
           {code}
         </motion.p>
-        <h2 className="mt-2 font-display text-4xl font-medium tracking-tight text-paper md:text-5xl">
+        <h2 className="mt-2 font-display text-4xl font-extrabold tracking-[-0.04em] text-paper md:text-5xl">
           {title}
         </h2>
       </div>

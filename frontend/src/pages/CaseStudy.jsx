@@ -36,7 +36,7 @@ export default function CaseStudy() {
             ← Featured work
           </Link>
           <p className="mt-6 font-mono text-xs font-medium uppercase tracking-[0.18em] text-verified">{study.category}</p>
-          <h1 className="mt-3 font-display text-4xl font-medium leading-tight text-paper md:text-5xl">
+          <h1 className="mt-3 font-display text-4xl font-extrabold tracking-[-0.04em] text-paper md:text-5xl">
             {study.title}
           </h1>
           <div className="mt-5 flex flex-wrap gap-2">
