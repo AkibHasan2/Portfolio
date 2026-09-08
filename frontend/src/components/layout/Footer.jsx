@@ -1,35 +1,42 @@
-import { motion } from "framer-motion";
-
 export default function Footer({ profile }) {
   const name = profile?.fullName || profile?.FullName || "Portfolio";
   const github = profile?.githubUrl || profile?.GithubUrl;
   const linkedin = profile?.linkedinUrl || profile?.LinkedinUrl;
 
   return (
-    <footer className="border-t border-rule px-6 py-10">
-      <motion.div
-        className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-muted md:flex-row"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        <p>
-          © {new Date().getFullYear()} {name}. .NET integration engineer — sanitized public portfolio.
-        </p>
-        <div className="flex gap-6 font-medium">
-          {github && (
-            <a href={github} target="_blank" rel="noreferrer" className="link-underline hover:text-verified">
-              GitHub
-            </a>
-          )}
-          {linkedin && (
-            <a href={linkedin} target="_blank" rel="noreferrer" className="link-underline hover:text-verified">
-              LinkedIn
-            </a>
-          )}
+    <footer className="border-t border-rule px-6 py-12">
+      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+        <div>
+          <p className="font-display text-lg font-bold text-paper">{name}</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Building reliable payment middleware with clean engineering and strong systems thinking.
+          </p>
         </div>
-      </motion.div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted">Navigation</p>
+          <ul className="mt-3 space-y-2 text-sm text-paper">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted">Connect</p>
+          <ul className="mt-3 space-y-2 text-sm">
+            {github && (
+              <li><a href={github} target="_blank" rel="noreferrer" className="text-paper hover:text-verified">GitHub</a></li>
+            )}
+            {linkedin && (
+              <li><a href={linkedin} target="_blank" rel="noreferrer" className="text-paper hover:text-verified">LinkedIn</a></li>
+            )}
+          </ul>
+        </div>
+      </div>
+      <p className="mx-auto mt-10 max-w-6xl text-xs text-muted">
+        © {new Date().getFullYear()} {name.toUpperCase()}. All rights reserved.
+      </p>
     </footer>
   );
 }

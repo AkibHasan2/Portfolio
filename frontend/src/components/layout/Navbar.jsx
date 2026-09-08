@@ -4,10 +4,10 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-
 import ThemeToggle from "../ui/ThemeToggle.jsx";
 
 const LINKS = [
-  { href: "#about", label: "About", id: "about" },
-  { href: "#expertise", label: "Expertise", id: "expertise" },
-  { href: "#projects", label: "Work", id: "projects" },
-  { href: "#engineering", label: "Engineering", id: "engineering" },
+  { href: "#top", label: "Home", id: "top" },
+  { href: "#about", label: "About Me", id: "about" },
+  { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#skills", label: "Skills", id: "skills" },
   { href: "#experience", label: "Experience", id: "experience" },
   { href: "#contact", label: "Contact", id: "contact" },
 ];

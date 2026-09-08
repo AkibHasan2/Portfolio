@@ -53,9 +53,9 @@ export default function Contact({ profile }) {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
       <EntryHeading
-        code="08 — Contact"
-        title="Let's connect"
-        description="Open to backend /.NET and integration roles—banking, fintech, or enterprise platforms."
+        code="Contact"
+        title="Let's build something valuable together."
+        description="I'm currently open to new opportunities and would like to discuss how I can contribute."
       />
 
       <Stagger className="grid gap-10 md:grid-cols-2" stagger={0.12}>

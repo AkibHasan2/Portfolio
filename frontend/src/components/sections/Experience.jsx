@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from "framer-motion";
-import EntryHeading from "../ui/EntryHeading.jsx";
 
 function formatRange(start, end) {
   const opts = { year: "numeric", month: "short" };
@@ -14,11 +13,13 @@ export default function Experience({ experience = [] }) {
 
   return (
     <section id="experience" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-      <EntryHeading
-        code="06 — Experience"
-        title="Experience"
-        description="Selected work in banking payments middleware."
-      />
+      <p className="text-sm font-medium text-verified">Experience</p>
+      <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-paper md:text-4xl">
+        A growing path shaped by real implementation.
+      </h2>
+      <p className="mb-10 mt-3 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
+        Payment middleware, dual-control workflows, and core banking integration in production banking systems.
+      </p>
       <ol className="relative space-y-10 border-l border-rule pl-8">
         {list.map((e, i) => {
           const company = e.Company || e.company;
