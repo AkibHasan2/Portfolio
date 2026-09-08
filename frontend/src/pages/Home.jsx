@@ -20,7 +20,13 @@ export default function Home() {
 
   return (
     <div className="grain relative min-h-screen bg-ink">
-      <Navbar name={profile?.fullName?.split(" ")[0] || profile?.FullName?.split(" ")[0] || "Akib"} />
+      <Navbar
+        name={(profile || staticProfile).fullName?.split(" ")[0]}
+        fullName={(profile || staticProfile).fullName}
+        githubUrl={(profile || staticProfile).githubUrl}
+        linkedinUrl={(profile || staticProfile).linkedinUrl}
+        email={(profile || staticProfile).email}
+      />
       <main>
         <Hero profile={profile || staticProfile} />
         <About profile={profile || staticProfile} />

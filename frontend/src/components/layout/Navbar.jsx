@@ -14,7 +14,14 @@ const LINKS = [
 
 const PAGE_LINKS = [{ to: "/resume", label: "Resume" }];
 
-export default function Navbar({ name = "Portfolio", homeHref = "#top" }) {
+export default function Navbar({
+  name = "Portfolio",
+  fullName = "Akib Hasan",
+  githubUrl,
+  linkedinUrl,
+  email,
+  homeHref = "#top",
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,10 +62,14 @@ export default function Navbar({ name = "Portfolio", homeHref = "#top" }) {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href={homeHref} className="font-display text-lg font-bold tracking-tight text-paper">
-          {name}
-          <span className="text-verified">.</span>
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+        <a href={homeHref} className="flex items-center gap-2.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-verified text-xs font-bold text-on-accent">
+            {(fullName || name).split(" ").map((p) => p[0]).join("").slice(0, 2).toUpperCase()}
+          </span>
+          <span className="hidden font-display text-sm font-bold tracking-wide text-paper sm:inline">
+            {(fullName || name).toUpperCase()}
+          </span>
         </a>
 
         <ul className="hidden items-center gap-6 text-sm font-medium text-muted lg:flex">
@@ -88,16 +99,25 @@ export default function Navbar({ name = "Portfolio", homeHref = "#top" }) {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-1 sm:flex">
+            {email && (
+              <a href={`mailto:${email}`} className="rounded-md px-2 py-1.5 text-xs font-semibold text-muted hover:text-paper" aria-label="Email">
+                Email
+              </a>
+            )}
+            {githubUrl && (
+              <a href={githubUrl} target="_blank" rel="noreferrer" className="rounded-md px-2 py-1.5 text-xs font-semibold text-muted hover:text-paper">
+                GitHub
+              </a>
+            )}
+            {linkedinUrl && (
+              <a href={linkedinUrl} target="_blank" rel="noreferrer" className="rounded-md px-2 py-1.5 text-xs font-semibold text-muted hover:text-paper">
+                LinkedIn
+              </a>
+            )}
+          </div>
           <ThemeToggle />
-          <motion.a
-            href={homeHref === "#top" ? "#contact" : `${homeHref}#contact`}
-            className="hidden rounded-md bg-verified px-3.5 py-2 text-sm font-semibold text-on-accent transition-opacity hover:opacity-90 sm:inline-flex"
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Contact
-          </motion.a>
 
           <button
             type="button"
