@@ -1,81 +1,51 @@
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
 import EntryHeading from "../ui/EntryHeading.jsx";
-import Stamp from "../ui/Stamp.jsx";
-import Reveal from "../ui/Reveal.jsx";
 
 export default function Projects({ projects = [] }) {
   const list = projects.filter((p) => p.Featured ?? p.featured);
-  const reduce = useReducedMotion();
+
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
       <EntryHeading
         code="03 — Work"
-        title="Featured projects"
-        description="Architecture-led case studies of banking middleware—sanitized public names, no proprietary source."
+        title="Featured work"
+        description="Architecture-led case studies. Sanitized names. No proprietary source."
       />
 
-      <Reveal>
-        <div className="grid gap-5 md:grid-cols-2">
-          {list.map((p, i) => {
-            const title = p.Title || p.title;
-            const summary = p.Summary || p.summary;
-            const stack = (p.TechStack || p.techStack || "").split(",").filter(Boolean);
-            const slug = p.Slug || p.slug;
-            const category = p.Category || p.category;
-            const highlights = p.Highlights || p.highlights || [];
-            const badge = p.Badge || (p.Featured ? "Featured" : "Project");
+      <ol className="divide-y divide-rule border-y border-rule">
+        {list.map((p, i) => {
+          const title = p.Title || p.title;
+          const summary = p.Summary || p.summary;
+          const slug = p.Slug || p.slug;
+          const category = p.Category || p.category;
+          const highlights = p.Highlights || p.highlights || [];
+          const num = String(i + 1).padStart(2, "0");
 
-            return (
-              <motion.article
-                key={p.Id || title}
-                className="panel-glow flex flex-col rounded-xl border border-rule bg-surface p-6"
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+          return (
+            <li key={p.Id || title}>
+              <Link
+                to={slug ? `/work/${slug}` : "#"}
+                className="group grid gap-4 py-8 md:grid-cols-[4.5rem_1fr_auto] md:items-start md:gap-8 md:py-10"
               >
-                <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <Stamp tone={badge === "Library" ? "wire" : "verified"} animate={false}>
-                    {badge}
-                  </Stamp>
-                  {category && <span className="text-xs font-medium text-muted">{category}</span>}
+                <span className="font-mono text-xs tracking-[0.18em] text-muted">{num}</span>
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">{category}</p>
+                  <h3 className="mt-2 font-display text-2xl font-medium leading-snug text-paper transition-colors group-hover:text-verified md:text-3xl">
+                    {title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted md:text-base">{summary}</p>
+                  {highlights.length > 0 && (
+                    <p className="mt-3 font-mono text-xs text-muted">{highlights.join("  ·  ")}</p>
+                  )}
                 </div>
-                <h3 className="font-display text-lg font-bold tracking-tightish text-paper">{title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{summary}</p>
-                {highlights.length > 0 && (
-                  <ul className="mt-4 space-y-1.5 text-sm text-muted">
-                    {highlights.map((h) => (
-                      <li key={h} className="flex gap-2">
-                        <span className="text-verified">·</span>
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {stack.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md border border-rule bg-ink/40 px-2 py-1 text-xs font-medium text-muted"
-                    >
-                      {t.trim()}
-                    </span>
-                  ))}
-                </div>
-                {slug && (
-                  <Link
-                    to={`/work/${slug}`}
-                    className="mt-5 inline-flex text-sm font-semibold text-verified link-underline"
-                  >
-                    Read case study →
-                  </Link>
-                )}
-              </motion.article>
-            );
-          })}
-        </div>
-      </Reveal>
+                <span className="hidden text-sm text-muted transition-transform group-hover:translate-x-1 group-hover:text-paper md:inline">
+                  Case study →
+                </span>
+              </Link>
+            </li>
+          );
+        })}
+      </ol>
     </section>
   );
 }

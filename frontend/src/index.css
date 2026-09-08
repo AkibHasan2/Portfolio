@@ -2,50 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional palette — GitHub/LinkedIn-adjacent neutrals + trust blue */
+/* Staff-engineer editorial — warm paper + navy ink (Stripe / Linear / consulting brief) */
 :root,
-[data-theme="dark"] {
-  --ink: 13 17 23;
-  --surface: 22 27 34;
-  --surface2: 33 38 45;
-  --paper: 230 237 243;
-  --muted: 139 148 158;
-  --rule: 48 54 61;
-  --verified: 47 129 247;
-  --amber: 210 153 34;
-  --wire: 88 166 255;
-  --on-accent: 255 255 255;
-  --success: 63 185 80;
-  --grain-opacity: 0.02;
-  --body-wash:
-    radial-gradient(ellipse 90% 55% at 50% -15%, rgba(47, 129, 247, 0.14), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(88, 166, 255, 0.06), transparent 45%);
-  --grid-fade:
-    linear-gradient(180deg, rgba(13, 17, 23, 0.2) 0%, rgba(13, 17, 23, 1) 100%),
-    radial-gradient(ellipse 70% 50% at 70% 20%, rgba(47, 129, 247, 0.08), transparent 60%);
-  color-scheme: dark;
+[data-theme="light"] {
+  --ink: 247 244 238;
+  --surface: 255 252 247;
+  --surface2: 240 235 226;
+  --paper: 22 28 36;
+  --muted: 92 84 74;
+  --rule: 214 206 194;
+  --verified: 15 61 92;
+  --amber: 122 90 42;
+  --wire: 15 61 92;
+  --on-accent: 247 244 238;
+  --success: 30 107 72;
+  --grain-opacity: 0.035;
+  --body-wash: linear-gradient(180deg, #f7f4ee 0%, #f3efe7 100%);
+  --grid-fade: linear-gradient(180deg, #f7f4ee 0%, #f3efe7 100%);
+  color-scheme: light;
 }
 
-[data-theme="light"] {
-  --ink: 246 248 250;
-  --surface: 255 255 255;
-  --surface2: 240 243 246;
-  --paper: 31 35 40;
-  --muted: 101 109 118;
-  --rule: 208 215 222;
-  --verified: 9 105 218;
-  --amber: 154 103 0;
-  --wire: 9 105 218;
-  --on-accent: 255 255 255;
-  --success: 26 127 55;
-  --grain-opacity: 0.025;
-  --body-wash:
-    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(9, 105, 218, 0.08), transparent 55%),
-    linear-gradient(180deg, #ffffff 0%, #f6f8fa 100%);
-  --grid-fade:
-    linear-gradient(180deg, rgba(246, 248, 250, 0.4) 0%, rgba(246, 248, 250, 1) 100%),
-    radial-gradient(ellipse 70% 50% at 75% 10%, rgba(9, 105, 218, 0.06), transparent 55%);
-  color-scheme: light;
+[data-theme="dark"] {
+  --ink: 14 18 24;
+  --surface: 20 26 34;
+  --surface2: 28 36 46;
+  --paper: 236 230 220;
+  --muted: 168 158 144;
+  --rule: 48 58 70;
+  --verified: 201 168 106;
+  --amber: 201 168 106;
+  --wire: 168 196 220;
+  --on-accent: 14 18 24;
+  --success: 120 176 140;
+  --grain-opacity: 0.04;
+  --body-wash: linear-gradient(180deg, #0e1218 0%, #121820 100%);
+  --grid-fade: linear-gradient(180deg, #0e1218 0%, #121820 100%);
+  color-scheme: dark;
 }
 
 html {
@@ -127,8 +119,7 @@ body {
   }
 
   .panel-glow:hover {
-    border-color: rgb(var(--verified) / 0.4);
-    box-shadow: 0 12px 32px -20px rgb(var(--paper) / 0.18);
+    border-color: rgb(var(--verified) / 0.45);
   }
 
   .row-glow {

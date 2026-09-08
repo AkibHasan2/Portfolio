@@ -9,7 +9,7 @@ const ThemeContext = createContext({
 const STORAGE_KEY = "portfolio-theme";
 
 function getInitialTheme() {
-  if (typeof document === "undefined") return "dark";
+  if (typeof document === "undefined") return "light";
   const attr = document.documentElement.getAttribute("data-theme");
   if (attr === "light" || attr === "dark") return attr;
   try {
@@ -18,7 +18,7 @@ function getInitialTheme() {
   } catch {
     /* ignore */
   }
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  return "light";
 }
 
 function applyTheme(theme) {
