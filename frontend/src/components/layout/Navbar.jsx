@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import ThemeToggle from "../ui/ThemeToggle.jsx";
+import SocialIcons from "../ui/SocialIcons.jsx";
 
 const LINKS = [
   { href: "#top", label: "Home", id: "top" },
@@ -100,23 +101,7 @@ export default function Navbar({
         </ul>
 
         <div className="flex items-center gap-2">
-          <div className="hidden items-center gap-1 sm:flex">
-            {email && (
-              <a href={`mailto:${email}`} className="rounded-md px-2 py-1.5 text-xs font-semibold text-muted hover:text-paper" aria-label="Email">
-                Email
-              </a>
-            )}
-            {githubUrl && (
-              <a href={githubUrl} target="_blank" rel="noreferrer" className="rounded-md px-2 py-1.5 text-xs font-semibold text-muted hover:text-paper">
-                GitHub
-              </a>
-            )}
-            {linkedinUrl && (
-              <a href={linkedinUrl} target="_blank" rel="noreferrer" className="rounded-md px-2 py-1.5 text-xs font-semibold text-muted hover:text-paper">
-                LinkedIn
-              </a>
-            )}
-          </div>
+          <SocialIcons email={email} githubUrl={githubUrl} linkedinUrl={linkedinUrl} />
           <ThemeToggle />
 
           <button

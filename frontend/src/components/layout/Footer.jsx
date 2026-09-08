@@ -1,3 +1,5 @@
+import SocialIcons from "../ui/SocialIcons.jsx";
+
 export default function Footer({ profile }) {
   const name = profile?.fullName || profile?.FullName || "Portfolio";
   const github = profile?.githubUrl || profile?.GithubUrl;
@@ -24,14 +26,7 @@ export default function Footer({ profile }) {
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-muted">Connect</p>
-          <ul className="mt-3 space-y-2 text-sm">
-            {github && (
-              <li><a href={github} target="_blank" rel="noreferrer" className="text-paper hover:text-verified">GitHub</a></li>
-            )}
-            {linkedin && (
-              <li><a href={linkedin} target="_blank" rel="noreferrer" className="text-paper hover:text-verified">LinkedIn</a></li>
-            )}
-          </ul>
+          <SocialIcons email={profile?.email || profile?.Email} githubUrl={github} linkedinUrl={linkedin} />
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-6xl text-xs text-muted">
