@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Balance check and retry flow">
+  <rect width="1600" height="1000" fill="#0b1220"/>
+  <text x="80" y="88" fill="#60a5fa" font-family="Segoe UI, Inter, sans-serif" font-size="22" font-weight="700">Check ’ retry ’ decide</text>
+  <text x="80" y="124" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="18">Confirm a sustained low reading before alerting</text>
+
+  <g font-family="Segoe UI, Inter, sans-serif">
+    <rect x="80" y="220" rx="14" width="220" height="90" fill="#111827" stroke="#334155"/>
+    <text x="190" y="274" text-anchor="middle" fill="#e2e8f0" font-size="18">Start run</text>
+
+    <rect x="360" y="220" rx="14" width="220" height="90" fill="#111827" stroke="#334155"/>
+    <text x="470" y="274" text-anchor="middle" fill="#e2e8f0" font-size="18">Get token</text>
+
+    <rect x="640" y="220" rx="14" width="260" height="90" fill="#111827" stroke="#334155"/>
+    <text x="770" y="274" text-anchor="middle" fill="#e2e8f0" font-size="18">Each account</text>
+
+    <rect x="980" y="220" rx="14" width="260" height="90" fill="#111827" stroke="#3b82f6"/>
+    <text x="1110" y="274" text-anchor="middle" fill="#60a5fa" font-size="18">Retry enquiry</text>
+
+    <rect x="1320" y="120" rx="14" width="200" height="80" fill="#111827" stroke="#334155"/>
+    <text x="1420" y="168" text-anchor="middle" fill="#e2e8f0" font-size="16">Skip / log</text>
+
+    <rect x="1320" y="240" rx="14" width="200" height="80" fill="#111827" stroke="#334155"/>
+    <text x="1420" y="288" text-anchor="middle" fill="#e2e8f0" font-size="16">Balance OK</text>
+
+    <rect x="1320" y="360" rx="14" width="200" height="80" fill="#111827" stroke="#f59e0b"/>
+    <text x="1420" y="408" text-anchor="middle" fill="#fbbf24" font-size="16">Still low</text>
+  </g>
+
+  <path d="M300 265 H360" stroke="#60a5fa" stroke-width="3" fill="none"/>
+  <path d="M580 265 H640" stroke="#60a5fa" stroke-width="3" fill="none"/>
+  <path d="M900 265 H980" stroke="#60a5fa" stroke-width="3" fill="none"/>
+  <path d="M1240 265 H1320" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M1240 265 C 1280 265, 1280 160, 1320 160" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M1240 265 C 1280 265, 1280 400, 1320 400" stroke="#f59e0b" stroke-width="2" fill="none"/>
+
+  <text x="80" y="520" fill="#cbd5e1" font-family="Segoe UI, Inter, sans-serif" font-size="18">If the enquiry is null or malformed, the account is skipped for that run.</text>
+  <text x="80" y="560" fill="#cbd5e1" font-family="Segoe UI, Inter, sans-serif" font-size="18">Low readings are rechecked with delay so a transient glitch does not page ops.</text>
+  <text x="80" y="620" fill="#64748b" font-family="Segoe UI, Inter, sans-serif" font-size="15">Sanitized flow  no account numbers, thresholds, or internal endpoint paths.</text>
+</svg>

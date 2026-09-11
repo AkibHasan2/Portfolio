@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Email and SMS alert path with daily cap">
+  <rect width="1600" height="1000" fill="#0b1220"/>
+  <text x="80" y="88" fill="#60a5fa" font-family="Segoe UI, Inter, sans-serif" font-size="22" font-weight="700">Dual-channel alert with daily cap</text>
+  <text x="80" y="124" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="18">Email first, then SMS  blocked once the daily limit is reached</text>
+
+  <rect x="120" y="240" rx="16" width="300" height="140" fill="#111827" stroke="#334155"/>
+  <text x="270" y="300" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700">Low balance confirmed</text>
+  <text x="270" y="336" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="15">After retry window</text>
+
+  <rect x="520" y="240" rx="16" width="300" height="140" fill="#111827" stroke="#3b82f6"/>
+  <text x="670" y="300" text-anchor="middle" fill="#60a5fa" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700">Under daily cap?</text>
+  <text x="670" y="336" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="15">Per-account counter</text>
+
+  <rect x="920" y="160" rx="16" width="280" height="120" fill="#111827" stroke="#334155"/>
+  <text x="1060" y="228" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="20">Send email</text>
+
+  <rect x="920" y="340" rx="16" width="280" height="120" fill="#111827" stroke="#334155"/>
+  <text x="1060" y="408" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="20">Send SMS</text>
+
+  <rect x="1280" y="240" rx="16" width="240" height="140" fill="#111827" stroke="#334155"/>
+  <text x="1400" y="300" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="20">Skip notify</text>
+  <text x="1400" y="336" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="15">Cap reached</text>
+
+  <path d="M420 310 H520" stroke="#60a5fa" stroke-width="3" fill="none"/>
+  <path d="M820 280 H920" stroke="#60a5fa" stroke-width="2" fill="none"/>
+  <path d="M820 340 H920" stroke="#60a5fa" stroke-width="2" fill="none"/>
+  <path d="M1070 280 C 1180 280, 1180 400, 1060 400" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M820 310 H1280" stroke="#64748b" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+
+  <text x="80" y="560" fill="#cbd5e1" font-family="Segoe UI, Inter, sans-serif" font-size="18">Counter resets on a new day or when the balance recovers above threshold.</text>
+  <text x="80" y="600" fill="#cbd5e1" font-family="Segoe UI, Inter, sans-serif" font-size="18">State is in-memory for the process lifetime  not a distributed lock.</text>
+  <text x="80" y="660" fill="#64748b" font-family="Segoe UI, Inter, sans-serif" font-size="15">Sanitized  no recipient numbers, templates, or gateway credentials.</text>
+</svg>

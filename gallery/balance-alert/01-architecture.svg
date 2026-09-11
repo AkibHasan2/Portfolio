@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Balance alert architecture">
+  <rect width="1600" height="1000" fill="#0b1220"/>
+  <text x="80" y="88" fill="#60a5fa" font-family="Segoe UI, Inter, sans-serif" font-size="22" font-weight="700">Account Balance Monitoring</text>
+  <text x="80" y="124" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="18">Sanitized architecture  Express process, no database</text>
+
+  <rect x="80" y="200" rx="16" width="280" height="120" fill="#111827" stroke="#334155"/>
+  <text x="220" y="255" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700">Cron / Manual GET</text>
+  <text x="220" y="286" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="14">Shared check path</text>
+
+  <rect x="460" y="180" rx="16" width="340" height="160" fill="#111827" stroke="#3b82f6"/>
+  <text x="630" y="245" text-anchor="middle" fill="#60a5fa" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700">Express monitor</text>
+  <text x="630" y="280" text-anchor="middle" fill="#cbd5e1" font-family="Segoe UI, Inter, sans-serif" font-size="15">Threshold · retry · daily cap</text>
+  <text x="630" y="308" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="14">In-memory send counters</text>
+
+  <path d="M360 260 H460" stroke="#60a5fa" stroke-width="3" fill="none"/>
+  <polygon points="460,254 478,260 460,266" fill="#60a5fa"/>
+
+  <rect x="940" y="80" rx="14" width="520" height="100" fill="#111827" stroke="#334155"/>
+  <text x="1200" y="138" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="20">Token API</text>
+
+  <rect x="940" y="220" rx="14" width="520" height="100" fill="#111827" stroke="#334155"/>
+  <text x="1200" y="278" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="20">Balance enquiry API</text>
+
+  <rect x="940" y="360" rx="14" width="240" height="100" fill="#111827" stroke="#334155"/>
+  <text x="1060" y="418" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="18">Email gateway</text>
+
+  <rect x="1220" y="360" rx="14" width="240" height="100" fill="#111827" stroke="#334155"/>
+  <text x="1340" y="418" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Inter, sans-serif" font-size="18">SMS gateway</text>
+
+  <path d="M800 230 H940" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M800 260 H940" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M800 300 C 860 300, 860 410, 940 410" stroke="#64748b" stroke-width="2" fill="none"/>
+
+  <text x="80" y="560" fill="#94a3b8" font-family="Segoe UI, Inter, sans-serif" font-size="16">Internal HTTP integrations only. No Kafka, no SQL persistence, no public UI.</text>
+  <text x="80" y="600" fill="#64748b" font-family="Segoe UI, Inter, sans-serif" font-size="15">Bank names, account numbers, and production URLs omitted.</text>
+</svg>
