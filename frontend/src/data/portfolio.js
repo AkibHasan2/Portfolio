@@ -50,8 +50,8 @@ export const capabilityTimeline = [
     detail: "Maker/Checker, Conductor orchestration, inventory state machines.",
   },
   {
-    title: "Full-stack ops delivery",
-    detail: "React bond operations UI, certificates, role-gated branch flows.",
+    title: "Document authenticity",
+    detail: "Central encrypted QR generate/verify with identity-gated public portal.",
   },
   {
     title: "Platform & observability",
@@ -72,6 +72,8 @@ export const resumeBullets = [
   "Implemented bond transfer workflows including holdings search, partial transfer, inventory reallocation, and certificate invalidation.",
   "Developed React operations SPA for maker/checker bond flows with role-based access, validation, and reporting exports.",
   "Generated verifiable bond PDF certificates using short-token QR links protected with AES-GCM and hashed token storage.",
+  "Built a central document QR generate/verify API with dual-layer AES-256-GCM encryption and a two-step identity challenge.",
+  "Delivered a React verify portal with Turnstile bot protection, rate-limited public verify, and async audit/expiry workers.",
   "Developed channel fund-transfer middleware enabling digital channels to verify and credit deposit, DPS, and loan accounts via CBS APIs.",
   "Implemented product-specific validation, client transaction uniqueness checks, and SQL-backed request/response audit logging.",
   "Built a reusable ASP.NET Core conversation-logging middleware for correlation IDs and durable inbound/outbound API logging to SQL Server.",
@@ -91,7 +93,8 @@ export const staticSkills = [
   { Category: "Frontend", Name: "React", Proficiency: 4 },
   { Category: "Frontend", Name: "Redux Toolkit", Proficiency: 4 },
   { Category: "Frontend", Name: "Tailwind CSS", Proficiency: 4 },
-  { Category: "Tooling", Name: "Swagger / OpenAPI", Proficiency: 4 },
+  { Category: "Security", Name: "AES-256-GCM", Proficiency: 4 },
+  { Category: "Security", Name: "Cloudflare Turnstile", Proficiency: 4 },
   { Category: "Tooling", Name: "Serilog", Proficiency: 4 },
   { Category: "Ops", Name: "Node.js / Express", Proficiency: 3 },
 ];
@@ -195,6 +198,24 @@ export const staticProjects = [
     LiveUrl: "",
   },
   {
+    Id: "document-qr",
+    Title: "Central Document Authenticity QR Platform",
+    Summary:
+      "Bank systems generate encrypted QR codes for official PDFs; customers scan a public portal, pass an identity challenge and bot check, then view verified document fields.",
+    TechStack: "ASP.NET Core, SQL Server SPs, Dapper, React, Redux Toolkit, AES-256-GCM, Turnstile",
+    Category: "Document Authenticity · Full-Stack",
+    Featured: true,
+    Badge: "Featured",
+    Slug: "document-qr",
+    Highlights: [
+      "Dual-layer AES-256-GCM payload encryption",
+      "Opaque public tokens + two-step identity gate",
+      "API-key generate for multiple integrating systems",
+    ],
+    RepoUrl: "",
+    LiveUrl: "",
+  },
+  {
     Id: "fund-transfer",
     Title: "Enterprise Channel Fund Transfer Middleware",
     Summary:
@@ -281,6 +302,17 @@ export const architectureDiagrams = [
   API --> CBS[Core_Banking]
   API --> SMS[SMS_Gateway]
   API --> Cert[Certificate_Verify]`,
+  },
+  {
+    id: "qr",
+    title: "Central QR Generate & Verify",
+    purpose: "Encrypted document QR with identity-gated public verify.",
+    mermaid: `flowchart LR
+  Sys[Bank_Systems] -->|API_key| API[QR_API]
+  API --> SQL[(SQL_Server)]
+  Cust[Customer] -->|Scan| Portal[Verify_Portal]
+  Portal -->|Verify| API
+  API --> CF[Turnstile]`,
   },
   {
     id: "fund",
@@ -404,6 +436,54 @@ export const caseStudies = {
       "Implementation across API services, SQL transfer/inventory paths, certificate/PDF utilities, and React maker/checker/transfer screens.",
     outcome:
       "End-to-end digitized bond purchase and transfer authorization with inventory integrity and verifiable certificates (qualitative; no published performance metrics).",
+  },
+  "document-qr": {
+    slug: "document-qr",
+    title: "Central Document Authenticity QR Platform",
+    category: "Document Authenticity · Full-Stack",
+    tech: ["ASP.NET Core", "SQL Server", "Dapper", "React", "Redux Toolkit", "AES-256-GCM", "Turnstile"],
+    decisions: [
+      {
+        title: "Dual-layer AES-256-GCM instead of ciphertext in the QR",
+        detail:
+          "System then global encryption isolates tenants; the QR carries an opaque token so links stay short and the payload never rides in the barcode.",
+      },
+      {
+        title: "Two-step verify before document fields",
+        detail:
+          "Anyone with the link only sees an identity challenge. Fields appear after the configured Last4/Exact match plus server-side Turnstile.",
+      },
+      {
+        title: "CAPTCHA on identity submit, not on generate",
+        detail:
+          "Bots attack guessing; integrating bank systems must call generate with an API key and cannot complete a widget.",
+      },
+    ],
+    problem:
+      "Bank systems issue PDFs and printed documents that customers and third parties need to trust. Without a shared verification channel, authenticity checks are manual, inconsistent, and easy to forge. Each line of business should not reinvent encryption, QR printing, or identity checks.",
+    context:
+      "A central generate/verify path lets CBS, HR, and other systems embed one QR format while customers self-serve verification on a public portal.",
+    solution:
+      "Integrating systems call a protected Generate API with document metadata. The platform encrypts the payload, stores a record, and returns a PNG QR URL for PDFs. Customers scan, pass an identity challenge and bot check, then view verified fields. Opaque short-link tokens keep public QR content non-enumerable.",
+    architecture:
+      "Layered ASP.NET Core REST API (controllers → pipelines → Dapper stored procedures) plus a React verify SPA. Background hosted services drain audit writes and expire records. No message bus.",
+    flow: [
+      "System authenticates with SystemId + API key and POSTs generate",
+      "Dual AES-256-GCM encrypt → persist QrRecord → return image URL",
+      "Customer opens opaque ?t= token in the portal",
+      "Step 1: token only → identity challenge prompt",
+      "Step 2: verification value + Turnstile → document fields + audit",
+    ],
+    challenges: [
+      "Keeping public QR links short and opaque while payloads stay confidential",
+      "Enforcing identity before disclosure without leaking fields on step 1",
+      "Dual encryption keys sourced from SQL with cache",
+      "Bot protection on a public endpoint without changing generate contracts",
+    ],
+    contribution:
+      "Implementation across generate/decrypt pipelines, SP data access, verify UX, Turnstile, rate limiting, and audit/expiry workers (inferred from delivered systems).",
+    outcome:
+      "A working central QR generate/verify path for multi-system document issuance and customer self-service verification. No quantified KPIs claimed.",
   },
   "fund-transfer": {
     slug: "fund-transfer",

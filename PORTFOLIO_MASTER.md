@@ -1,18 +1,19 @@
 # PORTFOLIO MASTER
 
-> Strategy document built **only** from the five project profile markdown files in `COMPILE_MD_FILE`.  
+> Strategy document built from project profile markdown files in `COMPILE_MD_FILE`.  
 > No source code was opened. Do not invent metrics, years of experience, or unverified outcomes.  
 > All banking work is proprietary — public naming must stay sanitized.
 
-**Profiles analyzed (5):**
+**Profiles analyzed (6):**
 
 | # | Profile file | Public name |
 |---|--------------|-------------|
 | 1 | `01.UTILITY_PROJECT_PROFILE.md` | Enterprise Utility Bill Payment Integration Platform |
 | 2 | `02.BOND_PROJECT_PROFILE.md` | Enterprise Bond Investment & Transfer Platform |
-| 3 | `03.FUND_XFER_PROJECT_PROFILE.md` | Enterprise Channel Fund Transfer Middleware |
-| 4 | `04.BALANCE_ALERT_PROJECT_PROFILE.md` | Account Balance Monitoring & Alert Service |
-| 5 | `05.LOG_PROJECT_PROFILE.md` | ASP.NET Core Conversation & API Logging Middleware |
+| 3 | `06.QR_PROJECT_PROFILE.md` | Central Document Authenticity QR Platform |
+| 4 | `03.FUND_XFER_PROJECT_PROFILE.md` | Enterprise Channel Fund Transfer Middleware |
+| 5 | `04.BALANCE_ALERT_PROJECT_PROFILE.md` | Account Balance Monitoring & Alert Service |
+| 6 | `05.LOG_PROJECT_PROFILE.md` | ASP.NET Core Conversation & API Logging Middleware |
 
 ---
 
@@ -25,7 +26,7 @@
 Full-stack contributor on selected enterprise UIs (React), with reusable observability libraries and operations automation.
 
 **Why not “generic Full Stack Developer” as the lead label:**  
-Four of five systems are backend/integration-first. Frontend is evidenced strongly in Bond only. The clearest differentiator is **controlled money movement between channels/UIs and core banking**, under dual control, auditability, and recovery.
+Most systems are backend/integration-first. Frontend is evidenced strongly in Bond operations UI and the QR customer verify portal. The clearest differentiator is **controlled money movement and document authenticity between channels/UIs and core banking**, under dual control, auditability, and recovery.
 
 **Strongest combination demonstrated:**
 
@@ -38,6 +39,7 @@ Four of five systems are backend/integration-first. Frontend is evidenced strong
 - Multi-provider API façades  
 - Observability / request correlation middleware  
 - React operations UI (Bond)  
+- Encrypted QR document verification (central generate + public portal)  
 - Lightweight Node.js ops automation (Balance Alert)
 
 **Positioning statement:**  
@@ -105,6 +107,9 @@ Backend-focused software engineer specializing in banking payments and enterpris
 - BCrypt password/client-secret hashing  
 - Role-gated UI access  
 - Certificate token security (SHA-256 hashed short tokens, AES-GCM payloads)  
+- Dual-layer AES-256-GCM document QR encryption; opaque public verify tokens  
+- API-key tenant isolation for integrating bank systems  
+- Cloudflare Turnstile on public identity submit; IP rate limiting on verify  
 - Configurable service-time / operational windows  
 - *Caveat for honesty:* some profiles note auth attributes partially commented / hardening opportunities  
 
@@ -139,25 +144,31 @@ Ranked for portfolio feature prominence:
 - **Main technologies:** .NET 8, Dapper, SQL Server SPs, React, Redux, Vite, iText7, AES-GCM/QR.  
 - **Strongest capability:** Complex domain workflow + secure document issuance + full-stack delivery.
 
-### 3. Enterprise Channel Fund Transfer Middleware
+### 3. Central Document Authenticity QR Platform
+- **One-line:** Central generate/verify service: bank systems embed encrypted QR on PDFs; customers scan, prove identity, and view verified fields.  
+- **Why feature:** Security + public self-service + multi-system integration (API-key generate, opaque tokens, dual AES-GCM, Turnstile). Complements Bond certificates with a shared authenticity platform.  
+- **Main technologies:** ASP.NET Core, SQL Server SPs, Dapper, React, Redux Toolkit, QRCoder, AES-256-GCM, Cloudflare Turnstile.  
+- **Strongest capability:** Confidential document QR links with two-step identity-gated disclosure.
+
+### 4. Enterprise Channel Fund Transfer Middleware
 - **One-line:** Channel-facing middleware for verifying accounts and transferring funds into deposit, DPS, and loan products through CBS.  
 - **Why feature:** Clean enterprise API façade pattern; product-rule branching; partner onboarding without exposing CBS.  
 - **Main technologies:** .NET 8, ASP.NET Core, Dapper, SQL Server, JWT, Serilog, HttpClient, Oracle linked-server checks.  
 - **Strongest capability:** Productized channel-to-CBS payment integration with auditability.
 
-### 4. ASP.NET Core Conversation & API Logging Middleware
+### 5. ASP.NET Core Conversation & API Logging Middleware
 - **One-line:** Reusable middleware library for conversation IDs and durable inbound/outbound API logging to SQL Server.  
 - **Why feature:** Shows platform thinking—reusable infrastructure used across banking APIs (also referenced by Bond/Utility profiles). Differentiates from “only feature APIs.”  
 - **Main technologies:** .NET 8, ASP.NET Core Middleware, DI extensions, Dapper, SQL Server.  
 - **Strongest capability:** Cross-cutting observability and library design.
 
-### 5. Account Balance Monitoring & Alert Service *(supporting / ops project)*
+### 6. Account Balance Monitoring & Alert Service *(supporting / ops project)*
 - **One-line:** Scheduled Node.js monitor that alerts ops by email/SMS when settlement accounts fall below threshold.  
 - **Why feature (as secondary):** Demonstrates operational reliability mindset and multi-API automation outside .NET. Good “Other Projects” or Experience supporting card—not a top hero case study alone.  
 - **Main technologies:** Node.js, Express, axios, node-cron.  
 - **Strongest capability:** Ops automation and notification reliability controls (retry + daily caps).
 
-**Portfolio main grid recommendation:** Feature **1–4** prominently; include **5** under Other Projects / Operations.
+**Portfolio main grid recommendation:** Feature **Utility · Bond · QR · Fund Transfer · Logging** prominently; include Balance Alert under Other Projects / Operations.
 
 ---
 
@@ -170,21 +181,28 @@ Ranked for portfolio feature prominence:
 ### Capital Markets / Branch Investment Operations
 - Bond Investment & Transfer Platform  
 
+### Document authenticity / customer self-service
+- Central Document Authenticity QR Platform  
+
 ### Enterprise Integration Middleware
-- Utility, Fund Transfer, Bond (CBS-facing)  
+- Utility, Fund Transfer, Bond (CBS-facing), QR generate (line-of-business systems)  
 
 ### Dual-Control / Workflow Systems
 - Utility (Conductor + maker/checker)  
 - Bond (maker/checker purchase & transfer)  
+
+### Security / cryptography (applied)
+- Dual-layer AES-256-GCM QR payloads; opaque verify tokens; Turnstile on public identity submit  
+
+### Full-Stack Enterprise Applications
+- Bond Investment & Transfer Platform  
+- QR customer verify portal (React)  
 
 ### Observability & Audit Infrastructure
 - Conversation & API Logging Middleware  
 
 ### Operations Monitoring & Alerting
 - Account Balance Monitoring & Alert Service  
-
-### Full-Stack Enterprise Applications
-- Bond Investment & Transfer Platform  
 
 ---
 
@@ -212,7 +230,7 @@ Evidence: SQL Server domain models, Dapper, stored procedures for inventory/appr
 Evidence: CBS retry for known error codes, Conductor recovery, service-time windows, audit trails, conversation logging, low-balance retry confirmation and daily alert caps.
 
 ### Full-Stack Enterprise UI (selected)
-Evidence: Bond React SPA—multi-step maker flows, role routing, validation, reporting exports.
+Evidence: Bond React SPA—multi-step maker flows, role routing, validation, reporting exports. QR React verify portal—two-step identity challenge, Turnstile, RTK Query.
 
 ### Reusable Platform Libraries
 Evidence: Conversation logging middleware consumed as a class library pattern; Bond/Utility profiles reference conversation logging components.
@@ -231,7 +249,7 @@ The recurring themes are:
 4. **Recoverability and audit** — retries, reruns, SQL logs, conversation IDs.  
 5. **Operational seriousness** — service windows, inventory locking, certificate invalidation, settlement balance alerts.
 
-The Bond platform extends that same discipline into a full operations product (UI + certificates). The logging library is the shared nervous system for tracing those integrations. Balance Alert shows awareness of treasury/ops continuity around the payment estate.
+The Bond platform extends that same discipline into a full operations product (UI + certificates). The central QR platform extends it to **document authenticity**: encrypt once, print QR, let the customer prove identity before fields appear. The logging library is the shared nervous system for tracing those integrations. Balance Alert shows awareness of treasury/ops continuity around the payment estate.
 
 **Story in one line:**  
 I engineer bank-grade payment and investment middleware—integrating core banking, enforcing dual control, and making failures visible and recoverable.
@@ -252,10 +270,10 @@ Emphasize banking domain, integration craftsmanship, dual-control/reliability mi
 Cluster cards: Core Banking Integration · Payment Middleware · Maker/Checker Workflows · SQL Server Domain Engineering · Observability Middleware · React Ops UIs.
 
 ### Featured Projects
-Utility · Bond · Fund Transfer · Logging Middleware (plus Balance Alert under Other).
+Utility · Bond · QR authenticity · Fund Transfer · Logging Middleware (plus Balance Alert under Other).
 
 ### Engineering
-Yes—include **sanitized** architecture diagrams for Utility, Bond, Fund Transfer, Logging. Focus on components and data flow, not real hostnames.
+Yes—include **sanitized** architecture diagrams for Utility, Bond, QR, Fund Transfer, Logging. Focus on components and data flow, not real hostnames.
 
 ### Experience
 Present as capability-led experience / selected engagements (or employer block once role/dates provided). Prefer “Selected work in banking payments middleware” over fake timeline.
@@ -307,6 +325,17 @@ Avoid: “Welcome to my portfolio.”
 **CTA:** Read case study  
 
 ### Card 3
+**Project title:** Central Document Authenticity QR Platform  
+**Short description:** Bank systems generate encrypted QR codes for official PDFs; customers scan a public portal, pass an identity challenge and bot check, then view verified document fields.  
+**Category:** Document Authenticity · Full-Stack  
+**Technologies:** ASP.NET Core · SQL Server SPs · Dapper · React · Redux Toolkit · AES-256-GCM · Turnstile  
+**3 key highlights:**  
+- Dual-layer AES-256-GCM payload encryption  
+- Opaque public tokens + two-step identity gate  
+- API-key generate for multiple integrating systems  
+**CTA:** Read case study  
+
+### Card 4
 **Project title:** Enterprise Channel Fund Transfer Middleware  
 **Short description:** Channel API for account verification and fund credit into deposit, DPS, and loan products via core banking, with mapping rules and SQL audit logging.  
 **Category:** Payments · Channel Integration  
@@ -317,7 +346,7 @@ Avoid: “Welcome to my portfolio.”
 - Client txn uniqueness + status enquiry  
 **CTA:** Read case study  
 
-### Card 4
+### Card 5
 **Project title:** ASP.NET Core Conversation & API Logging Middleware  
 **Short description:** Reusable library that stamps conversation IDs and persists inbound/outbound API payloads to SQL Server for end-to-end traceability.  
 **Category:** Observability · Platform Library  
@@ -328,7 +357,7 @@ Avoid: “Welcome to my portfolio.”
 - Plug-in DI/pipeline registration  
 **CTA:** View engineering notes  
 
-### Card 5 (Other Projects)
+### Card 6 (Other Projects)
 **Project title:** Account Balance Monitoring & Alert Service  
 **Short description:** Scheduled Node.js monitor that alerts operations by email/SMS when critical account balances stay below threshold.  
 **Category:** Ops Monitoring  
@@ -351,10 +380,13 @@ Recommended sections: Problem · Context · Solution · Architecture · Payment 
 #### B. Bond Investment & Transfer Platform
 Recommended sections: Problem · Context · Solution · Architecture · Purchase Flow · Transfer Flow · Inventory State Machine · Certificate Security · Integrations · Challenges · Contribution · Outcome (qualitative)
 
-#### C. Channel Fund Transfer Middleware
+#### C. Central Document Authenticity QR Platform
+Recommended sections: Problem · Context · Solution · Architecture · Generate flow · Two-step verify · Encryption · Portal UX · Integrations · Challenges · Contribution · Outcome (qualitative)
+
+#### D. Channel Fund Transfer Middleware
 Recommended sections: Problem · Context · Solution · Architecture · Verify vs Transfer · Product Rules (Deposit/DPS/Loan) · Config Model · Audit/Logging · Challenges · Contribution · Outcome (qualitative)
 
-#### D. Conversation Logging Middleware *(shorter case study / engineering deep-dive)*
+#### E. Conversation Logging Middleware *(shorter case study / engineering deep-dive)*
 Recommended sections: Problem · Solution · Middleware Pipeline · Data Model · Inbound vs Outbound Logging · Design Trade-offs · Contribution
 
 **Balance Alert:** summary page only (not a long case study), unless expanded with production/ops context later.
@@ -375,12 +407,17 @@ Do **not** invent KPIs, uptime, or volume numbers.
 - **Main components:** React Ops UI · Bond API · SQL Server / SPs · CBS · SMS · Certificate verify endpoint  
 - **Data flow:** Maker reserve → Checker → CBS payment → Approve SP → PDF/token → (transfer path: lock → reallocate → invalidate old cert → new cert)  
 
-### Diagram 3 — Channel Fund Transfer Façade
+### Diagram 3 — Central QR Generate & Verify
+- **Purpose:** Encrypted document QR with identity-gated public verify.  
+- **Main components:** Integrating bank systems · QR API · SQL Server SPs · Customer verify portal · Turnstile  
+- **Data flow:** API-key generate → dual AES-GCM persist → opaque token QR → scan → challenge → identity + captcha → document fields  
+
+### Diagram 4 — Channel Fund Transfer Façade
 - **Purpose:** Show partner channel isolated from CBS.  
 - **Main components:** Channel client · Fund Transfer API · SQL config/transactions · CBS enquiry/transfer APIs · Restriction views  
 - **Data flow:** Verify → rules + enquiry → Transfer → CBS SDMC/loan repay → persist txn/status  
 
-### Diagram 4 — Conversation Logging Pipeline
+### Diagram 5 — Conversation Logging Pipeline
 - **Purpose:** Show reusable observability plug-in.  
 - **Main components:** Host API · ConversationId middleware · ApiLogging middleware · ExternalApiLogger · SQL log tables  
 - **Data flow:** Inbound capture → app → response capture; outbound calls logged under same conversation ID  
@@ -395,7 +432,7 @@ Do **not** invent KPIs, uptime, or volume numbers.
 .NET engineer focused on banking payments and core-banking integration middleware. Builds ASP.NET Core APIs that verify accounts, execute controlled fund movement, and coordinate dual-control workflows with durable audit trails. Experienced with SQL Server/Dapper domain persistence, multi-provider HTTP integrations, workflow orchestration, and selected React operations UIs for branch workflows.
 
 ### Core Skills
-.NET 8 · ASP.NET Core · C# · REST APIs · SQL Server · Dapper · Stored Procedures · JWT · CBS/HTTP Integration · Maker/Checker Workflows · Netflix Conductor · SignalR · Serilog · React · Redux · Node.js (ops automation) · API Observability Middleware
+.NET 8 · ASP.NET Core · C# · REST APIs · SQL Server · Dapper · Stored Procedures · JWT · CBS/HTTP Integration · Maker/Checker Workflows · Netflix Conductor · SignalR · Serilog · React · Redux · AES-256-GCM · QR verification · Cloudflare Turnstile · Node.js (ops automation) · API Observability Middleware
 
 ### Top 10 CV Bullet Points
 1. Developed ASP.NET Core 8 utility-payment middleware integrating core banking and multiple biller APIs under a maker/checker model.  
@@ -405,9 +442,10 @@ Do **not** invent KPIs, uptime, or volume numbers.
 5. Implemented bond transfer workflows including holdings search, partial transfer, inventory reallocation, and certificate invalidation.  
 6. Developed React operations SPA for maker/checker bond flows with role-based access, validation, and reporting exports.  
 7. Generated verifiable bond PDF certificates using short-token QR links protected with AES-GCM and hashed token storage.  
-8. Developed channel fund-transfer middleware enabling digital channels to verify and credit deposit, DPS, and loan accounts via CBS APIs.  
-9. Implemented product-specific validation, client transaction uniqueness checks, and SQL-backed request/response audit logging.  
-10. Built a reusable ASP.NET Core conversation-logging middleware for correlation IDs and durable inbound/outbound API logging to SQL Server.
+8. Built a central document QR generate/verify API with dual-layer AES-256-GCM encryption, opaque public tokens, and a two-step identity challenge.  
+9. Delivered a React verify portal with Turnstile bot protection, rate-limited public verify, and async audit/expiry workers.  
+10. Developed channel fund-transfer middleware enabling digital channels to verify and credit deposit, DPS, and loan accounts via CBS APIs.  
+11. Built a reusable ASP.NET Core conversation-logging middleware for correlation IDs and durable inbound/outbound API logging to SQL Server.
 
 ---
 
@@ -419,13 +457,14 @@ Do **not** invent KPIs, uptime, or volume numbers.
 ### About Section
 I specialize in enterprise .NET middleware for banking payments and investment operations. My work connects branch and digital channels to core banking and external providers through controlled APIs—emphasizing dual-control authorization, explicit transaction statuses, recoverable workflows, and auditability.
 
-Recent work includes utility bill payment orchestration with workflow engines, bond purchase/transfer platforms with inventory and certificate issuance, channel fund-transfer APIs for deposit/DPS/loan credits, and reusable conversation-logging middleware for API traceability. I also build React interfaces for complex maker/checker operations when the workflow demands it.
+Recent work includes utility bill payment orchestration with workflow engines, bond purchase/transfer platforms with inventory and certificate issuance, a central encrypted-QR document verification portal, channel fund-transfer APIs for deposit/DPS/loan credits, and reusable conversation-logging middleware for API traceability.
 
 I care about integration correctness, failure visibility, and operational safety in regulated environments. Open to backend/.NET roles centered on banking technology, payments, and enterprise integration.
 
 ### Featured Project Descriptions
 - **Utility Bill Payment Integration Platform** — ASP.NET Core middleware connecting channels to CBS and multi-biller APIs with maker/checker approval and Conductor-orchestrated settlement.  
 - **Bond Investment & Transfer Platform** — .NET + React platform for dual-controlled bond purchase/transfer, CBS posting, inventory control, and QR-verifiable certificates.  
+- **Central Document Authenticity QR Platform** — Encrypted QR generation for official PDFs plus a public portal with identity challenge and bot protection.  
 - **Channel Fund Transfer Middleware** — API façade for partner channels to verify accounts and credit deposit/DPS/loan products through core banking.  
 - **Conversation Logging Middleware** — Reusable ASP.NET Core library for conversation IDs and SQL-persisted API request/response/external-call logs.
 
@@ -440,6 +479,7 @@ I care about integration correctness, failure visibility, and operational safety
 ### Keep private
 - Utility payment middleware  
 - Bond platform (API + UI)  
+- Central QR generation / verify platform  
 - Fund transfer middleware  
 - Balance alert service (contains operational account/alert patterns)  
 - Real conversation logging library if it embeds employer specifics  
@@ -547,7 +587,7 @@ Home
 ├── Core Expertise
 │     Integration · Payments · Dual-control workflows · SQL · Observability · React ops
 ├── Featured Projects
-│     Utility · Bond · Fund Transfer · Logging (+ Balance Alert in Other)
+│     Utility · Bond · QR authenticity · Fund Transfer · Logging (+ Balance Alert in Other)
 ├── Engineering Capabilities
 │     Short evidence-backed capability blocks from §6
 ├── Experience
@@ -579,5 +619,5 @@ Home
 ## Source note
 
 - **Project profiles found in portfolio repo:** `0` files named exactly `PROJECT_PROFILE.md`  
-- **Profiles used:** `5` attached/compile files (`01`–`05` `*_PROJECT_PROFILE.md`)  
+- **Profiles used:** `6` attached/compile files (`01`–`06` `*_PROJECT_PROFILE.md`)  
 - **Code/files not read:** `.cs`, `.js`, `.ts`, `.tsx`, `.sql`, `.json`, `node_modules`, `bin`, `obj`, and other source trees (per instruction)

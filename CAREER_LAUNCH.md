@@ -88,6 +88,7 @@ No bank / middleware project names are public — keep it that way.
 
 - Utility payment middleware  
 - Bond platform (API + UI)  
+- Central QR generation / verify platform  
 - Fund transfer middleware  
 - Balance alert service  
 - Real conversation-logging library if employer-specific  

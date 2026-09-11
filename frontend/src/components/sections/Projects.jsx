@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { projectGalleries } from "../../data/galleries.js";
+import { projectGalleries, galleryLabels } from "../../data/galleries.js";
 
 export default function Projects({ projects = [] }) {
   const list = projects.filter((p) => p.Featured ?? p.featured);
-  const galleryProjects = list.filter((p) => {
-    const slug = p.Slug || p.slug;
-    return slug === "bond-platform" || slug === "utility-payments";
-  });
+  const galleryOrder = ["bond-platform", "document-qr", "utility-payments"];
+  const galleryProjects = galleryOrder
+    .map((s) => list.find((p) => (p.Slug || p.slug) === s))
+    .filter(Boolean);
   const [active, setActive] = useState(0);
   const selected = galleryProjects[active] || galleryProjects[0];
   const slug = selected?.Slug || selected?.slug;
@@ -21,7 +21,7 @@ export default function Projects({ projects = [] }) {
         Selected work and real systems I built.
       </h2>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
-        Photo gallery for Bond and Utility. Click a thumbnail to enlarge.
+        Photo gallery for Bond, QR, and Utility. Click a thumbnail to enlarge.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2">
@@ -37,7 +37,7 @@ export default function Projects({ projects = [] }) {
               i === active ? "bg-verified text-on-accent" : "border border-rule text-paper"
             }`}
           >
-            {(p.Slug || p.slug) === "bond-platform" ? "Bond" : "Utility"}
+            {(p.Slug && galleryLabels[p.Slug]) || (p.slug && galleryLabels[p.slug]) || "Project"}
           </button>
         ))}
       </div>
@@ -58,8 +58,9 @@ export default function Projects({ projects = [] }) {
 
           {photos.length === 0 ? (
             <div className="rounded-xl border border-dashed border-rule px-6 py-16 text-center text-sm text-muted">
-              Utility screenshots are not in the gallery yet. Add images under{" "}
-              <span className="font-mono text-paper">frontend/public/gallery/utility</span>.
+              {(p.Slug || p.slug) === "utility-payments"
+                ? "Utility screenshots are not in the gallery yet. Add images under frontend/public/gallery/utility."
+                : "No screenshots in this gallery yet."}
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">

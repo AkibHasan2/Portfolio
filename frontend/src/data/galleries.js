@@ -11,5 +11,18 @@ export const projectGalleries = {
     { src: `${base}gallery/bond/07-review.png`, caption: "Review" },
     { src: `${base}gallery/bond/08-status.png`, caption: "Status" },
   ],
+  "document-qr": [
+    { src: `${base}gallery/qr/01-generate-encrypt-flow.png`, caption: "Generate — dual AES-GCM encrypt pipeline" },
+    { src: `${base}gallery/qr/02-verify-decrypt-flow.png`, caption: "Verify — decrypt and identity check" },
+    { src: `${base}gallery/qr/03-verify-start.png`, caption: "Customer portal — start verification (sanitized mock)" },
+    { src: `${base}gallery/qr/04-identity-challenge.png`, caption: "Identity challenge + bot check (sanitized mock)" },
+    { src: `${base}gallery/qr/05-document-view.png`, caption: "Verified document view (sanitized mock)" },
+  ],
   "utility-payments": [],
+};
+
+export const galleryLabels = {
+  "bond-platform": "Bond",
+  "document-qr": "QR",
+  "utility-payments": "Utility",
 };
