@@ -19,10 +19,16 @@ export const projectGalleries = {
     { src: `${base}gallery/qr/05-document-view.png`, caption: "Verified document view (sanitized mock)" },
   ],
   "utility-payments": [],
+  "balance-alert": [
+    { src: `${base}gallery/balance-alert/01-architecture.svg`, caption: "Architecture — cron/manual trigger and internal APIs" },
+    { src: `${base}gallery/balance-alert/02-check-retry-flow.svg`, caption: "Check and retry before treating balance as low" },
+    { src: `${base}gallery/balance-alert/03-alert-channels.svg`, caption: "Email then SMS, with a daily per-account cap" },
+  ],
 };
 
 export const galleryLabels = {
   "bond-platform": "Bond",
   "document-qr": "QR",
   "utility-payments": "Utility",
+  "balance-alert": "Balance Alert",
 };

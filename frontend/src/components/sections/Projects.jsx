@@ -4,7 +4,7 @@ import { projectGalleries, galleryLabels } from "../../data/galleries.js";
 
 export default function Projects({ projects = [] }) {
   const list = projects.filter((p) => p.Featured ?? p.featured);
-  const galleryOrder = ["bond-platform", "document-qr", "utility-payments"];
+  const galleryOrder = ["bond-platform", "document-qr", "utility-payments", "balance-alert"];
   const galleryProjects = galleryOrder
     .map((s) => list.find((p) => (p.Slug || p.slug) === s))
     .filter(Boolean);
@@ -21,7 +21,7 @@ export default function Projects({ projects = [] }) {
         Selected work and real systems I built.
       </h2>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
-        Photo gallery for Bond, QR, and Utility. Click a thumbnail to enlarge.
+        Photo gallery for Bond, QR, Utility, and Balance Alert. Click a thumbnail to enlarge.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2">
@@ -58,7 +58,7 @@ export default function Projects({ projects = [] }) {
 
           {photos.length === 0 ? (
             <div className="rounded-xl border border-dashed border-rule px-6 py-16 text-center text-sm text-muted">
-              {(p.Slug || p.slug) === "utility-payments"
+              {slug === "utility-payments"
                 ? "Utility screenshots are not in the gallery yet. Add images under frontend/public/gallery/utility."
                 : "No screenshots in this gallery yet."}
             </div>
@@ -71,7 +71,13 @@ export default function Projects({ projects = [] }) {
                   onClick={() => setOpen(photo)}
                   className="overflow-hidden rounded-xl border border-rule bg-surface text-left"
                 >
-                  <img src={photo.src} alt={photo.caption} className="aspect-[16/10] w-full object-cover object-top" />
+                  <img
+                    src={photo.src}
+                    alt={photo.caption}
+                    className={`aspect-[16/10] w-full ${
+                      slug === "balance-alert" ? "object-contain bg-ink" : "object-cover object-top"
+                    }`}
+                  />
                   <p className="px-3 py-2 text-xs text-muted">{photo.caption}</p>
                 </button>
               ))}

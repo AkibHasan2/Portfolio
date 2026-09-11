@@ -164,11 +164,11 @@ Ranked for portfolio feature prominence:
 
 ### 6. Account Balance Monitoring & Alert Service *(supporting / ops project)*
 - **One-line:** Scheduled Node.js monitor that alerts ops by email/SMS when settlement accounts fall below threshold.  
-- **Why feature (as secondary):** Demonstrates operational reliability mindset and multi-API automation outside .NET. Good “Other Projects” or Experience supporting card—not a top hero case study alone.  
+- **Why feature (as secondary):** Demonstrates operational reliability mindset and multi-API automation outside .NET. Visible as the sixth numbered project with a case study—not a top hero, but not hidden.  
 - **Main technologies:** Node.js, Express, axios, node-cron.  
 - **Strongest capability:** Ops automation and notification reliability controls (retry + daily caps).
 
-**Portfolio main grid recommendation:** Feature **Utility · Bond · QR · Fund Transfer · Logging** prominently; include Balance Alert under Other Projects / Operations.
+**Portfolio main grid recommendation:** Feature **Utility · Bond · QR · Fund Transfer · Logging · Balance Alert**. Balance Alert is supporting/ops (Node.js, no UI) but must still appear on the site with a case study so the full six-profile set is visible.
 
 ---
 
@@ -270,10 +270,10 @@ Emphasize banking domain, integration craftsmanship, dual-control/reliability mi
 Cluster cards: Core Banking Integration · Payment Middleware · Maker/Checker Workflows · SQL Server Domain Engineering · Observability Middleware · React Ops UIs.
 
 ### Featured Projects
-Utility · Bond · QR authenticity · Fund Transfer · Logging Middleware (plus Balance Alert under Other).
+Utility · Bond · QR authenticity · Fund Transfer · Logging Middleware · Balance Alert.
 
 ### Engineering
-Yes—include **sanitized** architecture diagrams for Utility, Bond, QR, Fund Transfer, Logging. Focus on components and data flow, not real hostnames.
+Yes—include **sanitized** architecture diagrams for Utility, Bond, QR, Fund Transfer, Logging, Balance Alert. Focus on components and data flow, not real hostnames.
 
 ### Experience
 Present as capability-led experience / selected engagements (or employer block once role/dates provided). Prefer “Selected work in banking payments middleware” over fake timeline.
@@ -357,16 +357,16 @@ Avoid: “Welcome to my portfolio.”
 - Plug-in DI/pipeline registration  
 **CTA:** View engineering notes  
 
-### Card 6 (Other Projects)
+### Card 6
 **Project title:** Account Balance Monitoring & Alert Service  
 **Short description:** Scheduled Node.js monitor that alerts operations by email/SMS when critical account balances stay below threshold.  
-**Category:** Ops Monitoring  
+**Category:** Ops Monitoring · Automation  
 **Technologies:** Node.js · Express · Cron · Axios  
 **3 key highlights:**  
 - Cron + manual trigger  
 - Retry before alert  
 - Daily per-account notification caps  
-**CTA:** View summary  
+**CTA:** Read case study  
 
 ---
 
@@ -389,7 +389,8 @@ Recommended sections: Problem · Context · Solution · Architecture · Verify v
 #### E. Conversation Logging Middleware *(shorter case study / engineering deep-dive)*
 Recommended sections: Problem · Solution · Middleware Pipeline · Data Model · Inbound vs Outbound Logging · Design Trade-offs · Contribution
 
-**Balance Alert:** summary page only (not a long case study), unless expanded with production/ops context later.
+#### F. Account Balance Monitoring & Alert Service *(ops / automation case study)*
+Recommended sections: Problem · Context · Solution · Architecture · Check → retry → notify flow · Dual-channel alerts · Daily caps · Challenges · Contribution · Outcome (qualitative)
 
 Do **not** invent KPIs, uptime, or volume numbers.
 
@@ -422,6 +423,11 @@ Do **not** invent KPIs, uptime, or volume numbers.
 - **Main components:** Host API · ConversationId middleware · ApiLogging middleware · ExternalApiLogger · SQL log tables  
 - **Data flow:** Inbound capture → app → response capture; outbound calls logged under same conversation ID  
 
+### Diagram 6 — Balance Alert Monitor
+- **Purpose:** Show scheduled treasury-account monitoring and dual-channel alerts.  
+- **Main components:** Cron / manual HTTP · Express service · Token API · Balance enquiry API · Email gateway · SMS gateway  
+- **Data flow:** Trigger → bearer token → per-account retry enquiry → threshold + daily cap → email then SMS  
+
 **Sanitize:** no IPs, prod URLs, bank legal names, account samples, partner brand route names, credentials.
 
 ---
@@ -445,7 +451,8 @@ Do **not** invent KPIs, uptime, or volume numbers.
 8. Built a central document QR generate/verify API with dual-layer AES-256-GCM encryption, opaque public tokens, and a two-step identity challenge.  
 9. Delivered a React verify portal with Turnstile bot protection, rate-limited public verify, and async audit/expiry workers.  
 10. Developed channel fund-transfer middleware enabling digital channels to verify and credit deposit, DPS, and loan accounts via CBS APIs.  
-11. Built a reusable ASP.NET Core conversation-logging middleware for correlation IDs and durable inbound/outbound API logging to SQL Server.
+11. Built a reusable ASP.NET Core conversation-logging middleware for correlation IDs and durable inbound/outbound API logging to SQL Server.  
+12. Developed a Node.js scheduled monitor that checks operational account balances and sends email/SMS alerts with retry confirmation and daily caps.
 
 ---
 
@@ -457,7 +464,7 @@ Do **not** invent KPIs, uptime, or volume numbers.
 ### About Section
 I specialize in enterprise .NET middleware for banking payments and investment operations. My work connects branch and digital channels to core banking and external providers through controlled APIs—emphasizing dual-control authorization, explicit transaction statuses, recoverable workflows, and auditability.
 
-Recent work includes utility bill payment orchestration with workflow engines, bond purchase/transfer platforms with inventory and certificate issuance, a central encrypted-QR document verification portal, channel fund-transfer APIs for deposit/DPS/loan credits, and reusable conversation-logging middleware for API traceability.
+Recent work includes utility bill payment orchestration with workflow engines, bond purchase/transfer platforms with inventory and certificate issuance, a central encrypted-QR document verification portal, channel fund-transfer APIs for deposit/DPS/loan credits, reusable conversation-logging middleware for API traceability, and a Node.js balance-monitoring service that alerts operations when settlement accounts run low.
 
 I care about integration correctness, failure visibility, and operational safety in regulated environments. Open to backend/.NET roles centered on banking technology, payments, and enterprise integration.
 
@@ -466,7 +473,8 @@ I care about integration correctness, failure visibility, and operational safety
 - **Bond Investment & Transfer Platform** — .NET + React platform for dual-controlled bond purchase/transfer, CBS posting, inventory control, and QR-verifiable certificates.  
 - **Central Document Authenticity QR Platform** — Encrypted QR generation for official PDFs plus a public portal with identity challenge and bot protection.  
 - **Channel Fund Transfer Middleware** — API façade for partner channels to verify accounts and credit deposit/DPS/loan products through core banking.  
-- **Conversation Logging Middleware** — Reusable ASP.NET Core library for conversation IDs and SQL-persisted API request/response/external-call logs.
+- **Conversation Logging Middleware** — Reusable ASP.NET Core library for conversation IDs and SQL-persisted API request/response/external-call logs.  
+- **Account Balance Monitoring & Alert Service** — Node.js cron job that checks settlement/ops accounts against a threshold and notifies by email/SMS with retry and daily caps.
 
 ---
 
@@ -587,15 +595,13 @@ Home
 ├── Core Expertise
 │     Integration · Payments · Dual-control workflows · SQL · Observability · React ops
 ├── Featured Projects
-│     Utility · Bond · QR authenticity · Fund Transfer · Logging (+ Balance Alert in Other)
+│     Utility · Bond · QR authenticity · Fund Transfer · Logging · Balance Alert
 ├── Engineering Capabilities
 │     Short evidence-backed capability blocks from §6
 ├── Experience
 │     Employer/role blocks once dates/titles provided; until then “Selected banking systems work”
 ├── Architecture / Technical Approach
-│     3–4 sanitized diagrams + narrative on reliability & dual control
-├── Other Projects
-│     Balance Alert + any future smaller tools
+│     Sanitized diagrams + narrative on reliability & dual control
 └── Contact
       Email · LinkedIn · Location · availability note
 ```
@@ -607,11 +613,10 @@ Home
 | Hero | Identity + domain + CTAs |
 | Summary | Credibility paragraph for recruiters |
 | Expertise | Scannable proof themes |
-| Featured Projects | Cards from §10 linking to case studies |
+| Featured Projects | Cards from §10 linking to case studies (all six profiles) |
 | Capabilities | Evidence, not buzzwords |
 | Experience | Formal roles when available |
 | Architecture | Diagrams that show systems thinking |
-| Other Projects | Breadth without diluting top four |
 | Contact | Low-friction professional outreach |
 
 ---

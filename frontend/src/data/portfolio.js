@@ -77,6 +77,8 @@ export const resumeBullets = [
   "Developed channel fund-transfer middleware enabling digital channels to verify and credit deposit, DPS, and loan accounts via CBS APIs.",
   "Implemented product-specific validation, client transaction uniqueness checks, and SQL-backed request/response audit logging.",
   "Built a reusable ASP.NET Core conversation-logging middleware for correlation IDs and durable inbound/outbound API logging to SQL Server.",
+  "Developed a Node.js/Express service that monitors operational account balances on a schedule and alerts ops by email/SMS when funds stay below threshold.",
+  "Implemented retry confirmation and daily per-account alert caps to reduce false or excessive low-balance notifications.",
 ];
 
 export const staticSkills = [
@@ -251,21 +253,23 @@ export const staticProjects = [
     RepoUrl: "",
     LiveUrl: "",
   },
-];
-
-export const otherProjects = [
   {
     Id: "balance-alert",
     Title: "Account Balance Monitoring & Alert Service",
     Summary:
       "Scheduled Node.js monitor that alerts operations by email/SMS when critical account balances stay below threshold.",
     TechStack: "Node.js, Express, Cron, Axios",
-    Category: "Ops Monitoring",
-    Featured: false,
+    Category: "Ops Monitoring · Automation",
+    Featured: true,
     Badge: "Ops",
+    Slug: "balance-alert",
     Highlights: ["Cron + manual trigger", "Retry before alert", "Daily per-account notification caps"],
+    RepoUrl: "",
+    LiveUrl: "",
   },
 ];
+
+export const otherProjects = [];
 
 export const staticExperience = [
   {
@@ -336,6 +340,17 @@ export const architectureDiagrams = [
   App --> Ext[ExternalApiLogger]
   M2 --> Logs[(SQL_Log_Tables)]
   Ext --> Logs`,
+  },
+  {
+    id: "balance-alert",
+    title: "Balance Alert Monitor",
+    purpose: "Scheduled treasury-account checks with dual-channel alerts.",
+    mermaid: `flowchart LR
+  Cron[Cron_or_Manual] --> App[Express_Monitor]
+  App --> Auth[Token_API]
+  App --> CBS[Balance_Enquiry]
+  App --> Mail[Email_Gateway]
+  App --> Sms[SMS_Gateway]`,
   },
 ];
 
@@ -580,5 +595,54 @@ export const caseStudies = {
       "Implemented middleware, SQL store, external logger, and host registration extensions as a reusable library pattern.",
     outcome:
       "Host APIs can enable conversation-scoped logging with minimal wiring and query SQL log tables by conversation ID.",
+  },
+  "balance-alert": {
+    slug: "balance-alert",
+    title: "Account Balance Monitoring & Alert Service",
+    category: "Ops Monitoring · Automation",
+    tech: ["Node.js", "Express", "node-cron", "Axios", "dotenv"],
+    decisions: [
+      {
+        title: "Retry before treating a balance as low",
+        detail:
+          "A single enquiry can flap or return a stale reading. The job rechecks with delay and only alerts after the low reading holds.",
+      },
+      {
+        title: "Daily per-account notification caps",
+        detail:
+          "Once email/SMS has fired, further sends that day are blocked so ops is not flooded while the account stays under threshold.",
+      },
+      {
+        title: "Cron plus a manual HTTP trigger",
+        detail:
+          "The same check path runs on a schedule and on demand, so operations can re-run without waiting for the next tick.",
+      },
+    ],
+    problem:
+      "Settlement and operational accounts must stay above a funding minimum so payments and clearing continue. Manual watching is slow and easy to miss.",
+    context:
+      "Ops needs automated detection when configured accounts drop below threshold, with email and SMS to the right people and without alert spam.",
+    solution:
+      "A Node.js/Express process loads accounts and a threshold from configuration, obtains a bearer token, queries available balance for each account, retries to confirm a sustained low reading, then sends email and SMS through internal gateways—subject to a daily per-account cap. Cron runs the job automatically; a GET endpoint triggers the same path manually.",
+    architecture:
+      "Single Express process with in-file service functions: scheduled work via node-cron, HTTP trigger for manual runs, and outbound HTTP to token, balance, email, and SMS APIs. Daily send counters live in process memory (no database).",
+    flow: [
+      "Cron or manual GET starts a check run",
+      "Obtain bearer token from the internal auth API",
+      "For each configured account: retry balance enquiry with delay",
+      "Skip and log if the enquiry returns null or malformed data",
+      "If still below threshold and under the daily cap: send email, then SMS",
+      "If balance recovers or the date changes: reset the daily counter",
+    ],
+    challenges: [
+      "Four internal HTTP APIs with different payloads (token, enquiry, email, SMS)",
+      "Parsing non-numeric balance strings (currency markers, commas) into comparable amounts",
+      "Avoiding false low-balance alerts via retry confirmation",
+      "Limiting notification volume with a daily per-account cap",
+    ],
+    contribution:
+      "Implementation of the monitoring workflow, API integrations, retry/rate-limit logic, and environment-driven configuration (inferred from delivered systems).",
+    outcome:
+      "An operational alerting path for low balances with dual-channel notifications and schedule/manual execution. No quantified metrics claimed.",
   },
 };

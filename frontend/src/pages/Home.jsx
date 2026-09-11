@@ -4,11 +4,12 @@ import Hero from "../components/sections/Hero.jsx";
 import About from "../components/sections/About.jsx";
 import Skills from "../components/sections/Skills.jsx";
 import Projects from "../components/sections/Projects.jsx";
+import OtherProjects from "../components/sections/OtherProjects.jsx";
 import Experience from "../components/sections/Experience.jsx";
 import Contact from "../components/sections/Contact.jsx";
 import { useFetch } from "../hooks/useFetch.js";
 import { api } from "../services/api.js";
-import { staticProfile, staticSkills, staticProjects, staticExperience } from "../data/static.js";
+import { staticProfile, staticSkills, staticProjects, staticExperience, otherProjects } from "../data/static.js";
 
 export default function Home() {
   const { data: profile } = useFetch(api.getProfile, staticProfile, []);
@@ -31,6 +32,7 @@ export default function Home() {
         <Hero profile={profile || staticProfile} />
         <About profile={profile || staticProfile} />
         <Projects projects={featured.length ? featured : staticProjects} />
+        <OtherProjects projects={otherProjects} />
         <Skills skills={skills?.length ? skills : staticSkills} />
         <Experience experience={experience?.length ? experience : staticExperience} />
         <Contact profile={profile || staticProfile} />
