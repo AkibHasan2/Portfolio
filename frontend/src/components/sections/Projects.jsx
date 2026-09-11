@@ -21,7 +21,8 @@ export default function Projects({ projects = [] }) {
         Selected work and real systems I built.
       </h2>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
-        Photo gallery for Bond, QR, Utility, and Balance Alert. Click a thumbnail to enlarge.
+        Photo gallery for Bond, QR, Utility, and Balance Alert. Click a thumbnail to enlarge. Implementation
+        source stays private; public briefs live on GitHub.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2">
@@ -100,9 +101,21 @@ export default function Projects({ projects = [] }) {
                   <h3 className="font-display text-lg font-bold text-paper">{title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{summary}</p>
                   {itemSlug && (
-                    <Link to={`/work/${itemSlug}`} className="mt-2 inline-block text-sm font-semibold text-verified">
-                      Case study
-                    </Link>
+                    <div className="mt-2 flex flex-wrap gap-4">
+                      <Link to={`/work/${itemSlug}`} className="text-sm font-semibold text-verified">
+                        Case study
+                      </Link>
+                      {(p.RepoUrl || p.repoUrl) && (
+                        <a
+                          href={p.RepoUrl || p.repoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm font-semibold text-muted hover:text-verified"
+                        >
+                          GitHub brief
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>

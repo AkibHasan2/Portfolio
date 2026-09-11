@@ -97,7 +97,15 @@ If any of those exist on GitHub: repo → **Settings** → **Danger Zone** → *
 
 ### Keep / make public
 
-- **Portfolio** only for career signal (already public).
+- **Portfolio** only for career signal (already public).  
+- README + `docs/projects/` are the public way to understand the systems. **Do not** create extra public repos that contain bank source.
+
+### How GitHub visitors should read the work
+
+1. Open https://github.com/AkibHasan2/Portfolio — README table + source policy.  
+2. Open a `docs/projects/*.md` brief (architecture, decisions, what is not published).  
+3. Open the live case study from that brief.  
+4. If they ask for source: explain private/employer code; offer an architecture walkthrough.
 
 ### Pin Portfolio (do now)
 

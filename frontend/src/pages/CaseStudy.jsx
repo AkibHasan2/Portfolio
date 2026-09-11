@@ -121,6 +121,14 @@ export default function CaseStudy() {
           <Link to="/#projects" className="rounded-md bg-verified px-4 py-2 text-sm font-semibold text-on-accent">
             More featured work
           </Link>
+          <a
+            href={`https://github.com/AkibHasan2/Portfolio/blob/main/docs/projects/${slug}.md`}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-md border border-rule px-4 py-2 text-sm font-semibold text-paper"
+          >
+            GitHub brief
+          </a>
           <Link to="/#contact" className="rounded-md border border-rule px-4 py-2 text-sm font-semibold text-paper">
             Contact
           </Link>

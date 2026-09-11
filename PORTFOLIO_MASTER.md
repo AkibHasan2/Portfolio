@@ -480,25 +480,39 @@ I care about integration correctness, failure visibility, and operational safety
 
 ## 15. GitHub Strategy
 
-### Public repositories
-- **Sanitized demonstration repos only** (if approved): Conversation Logging middleware *concept* demo; generic “payment middleware sample” with fake CBS stubs.  
-- Portfolio website source (this site) — OK if no secrets.
+**Chosen approach: public narrative, private source.**  
+People should understand the systems from this Portfolio repo and the live case studies. They should never clone production banking code.
 
-### Keep private
+### What is public
+- This **Portfolio** repository (website + sanitized `docs/projects/*` briefs + README index).  
+- GitHub Pages site with case studies, galleries, and architecture diagrams.  
+- Optional later (only if explicitly approved): a **stub** demo with fake CBS adapters — clearly labeled “not bank code.”
+
+### What stays private (never flip to Public)
 - Utility payment middleware  
 - Bond platform (API + UI)  
 - Central QR generation / verify platform  
 - Fund transfer middleware  
-- Balance alert service (contains operational account/alert patterns)  
-- Real conversation logging library if it embeds employer specifics  
+- Balance alert service  
+- Real conversation-logging library if it embeds employer specifics  
+- Configs, `.env`, keys, account data, production URLs, unredacted screenshots  
 
-### Sanitized demonstration alternatives
+### How visitors understand the work without source
+1. **GitHub README** — positioning, source policy, project table.  
+2. **`docs/projects/`** — one markdown brief per system (problem, solution, stack, sanitized mermaid, decisions, “not published”).  
+3. **Live case study pages** — same narrative with more depth; each links back to its GitHub brief.  
+4. **Interview** — walk through status lifecycles, retries, inventory, token design. Code review of proprietary trees happens only under NDA / employer process.
+
+### Why not public source repos
+Open-sourcing CBS-facing payment code, certificates, or ops-account monitors is a compliance and security failure. Recruiters in banking/fintech expect **private implementations + public architecture storytelling**. Empty public repos named after internal systems look worse than no repo.
+
+### Sanitized demonstration alternatives (optional, later)
 - Stub CBS/biller adapters + in-memory workflow  
 - Fake maker/checker sample  
 - Logging middleware with local SQL + no real payloads  
 
-### README structure (for any public demo)
-Problem · Scope boundaries · Architecture diagram · Features · Tech stack · Local run · Security notes · “Not production bank code”
+### README structure (this repo and any future stub)
+Problem · Scope boundaries · Architecture diagram · Features · Tech stack · “Not production bank code” · Link to live case study
 
 ### Architecture diagrams / screenshots
 - Use sanitized diagrams from §12  

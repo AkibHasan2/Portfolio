@@ -178,7 +178,7 @@ export const staticProjects = [
       "Conductor approve → CBS → biller with retry/rerun",
       "Explicit failure statuses + audit trail",
     ],
-    RepoUrl: "",
+    RepoUrl: "https://github.com/AkibHasan2/Portfolio/blob/main/docs/projects/utility-payments.md",
     LiveUrl: "",
   },
   {
@@ -196,7 +196,7 @@ export const staticProjects = [
       "Inventory reserve/approve lifecycle",
       "Secure short-token certificate verification",
     ],
-    RepoUrl: "",
+    RepoUrl: "https://github.com/AkibHasan2/Portfolio/blob/main/docs/projects/bond-platform.md",
     LiveUrl: "",
   },
   {
@@ -214,7 +214,7 @@ export const staticProjects = [
       "Opaque public tokens + two-step identity gate",
       "API-key generate for multiple integrating systems",
     ],
-    RepoUrl: "",
+    RepoUrl: "https://github.com/AkibHasan2/Portfolio/blob/main/docs/projects/document-qr.md",
     LiveUrl: "",
   },
   {
@@ -232,7 +232,7 @@ export const staticProjects = [
       "Channel–product–debit configuration model",
       "Client txn uniqueness + status enquiry",
     ],
-    RepoUrl: "",
+    RepoUrl: "https://github.com/AkibHasan2/Portfolio/blob/main/docs/projects/fund-transfer.md",
     LiveUrl: "",
   },
   {
@@ -250,7 +250,7 @@ export const staticProjects = [
       "Request/response + external call logging",
       "Plug-in DI/pipeline registration",
     ],
-    RepoUrl: "",
+    RepoUrl: "https://github.com/AkibHasan2/Portfolio/blob/main/docs/projects/conversation-logging.md",
     LiveUrl: "",
   },
   {
@@ -264,7 +264,7 @@ export const staticProjects = [
     Badge: "Ops",
     Slug: "balance-alert",
     Highlights: ["Cron + manual trigger", "Retry before alert", "Daily per-account notification caps"],
-    RepoUrl: "",
+    RepoUrl: "https://github.com/AkibHasan2/Portfolio/blob/main/docs/projects/balance-alert.md",
     LiveUrl: "",
   },
 ];
